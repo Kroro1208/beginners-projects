@@ -19,7 +19,9 @@ export default function Home() {
       <Link href="/colorChange">
         <button className="border-2 border-black px-3 py-2 rounded-lg bg-green-300">カラーチェンジ</button>
       </Link>
-
+      <Link href="/comment">
+        <button className="border-2 border-black px-3 py-2 rounded-lg bg-cyan-300">コメント</button>
+      </Link>
     </div>
   );
 }
