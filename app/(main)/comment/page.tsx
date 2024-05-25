@@ -1,19 +1,9 @@
 "use client";
 import { NextPage } from "next"
-import { ChangeEvent, useState } from "react";
+import { CommentChat } from "./customHook";
 
 const Comment: NextPage = () => {
-    const [inputText, setInputText] = useState("");
-    const [commentList, setCommentList] = useState<string[]>([]);
-
-    const handleInputComment = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setInputText(e.target.value);
-    }
-    const handleSubmit = () => {
-        if (!inputText.trim()) return;
-        setCommentList((prev) => [...prev, inputText]);
-        setInputText('');
-    }
+    const { inputText, commentList, handleInputComment, handleSubmit } = CommentChat();
 
     return (
         <div className="max-w-4xl mx-auto mt-8">
