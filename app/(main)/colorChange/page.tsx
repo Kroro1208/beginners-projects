@@ -1,15 +1,9 @@
 "use client";
 import { NextPage } from "next"
-import { useState } from "react";
+import { ColorChange } from "./customHook";
 
 const ButtonColorChange: NextPage = () => {
-    const [color, setColor] = useState('skyblue')
-    const colors = ['lightblue', 'lightgreen', 'pink', 'red', 'indigo', 'green', 'slate', 'orange', 'yellow', 'purple'];
-
-    const handleColorChange = () => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        setColor(randomColor);
-    }
+    const { color, handleColorChange } = ColorChange();
 
     return (
         <div className="h-screen pt-8" style={{ backgroundColor: color }}>
