@@ -13,11 +13,11 @@ export default function Home() {
       <Link href="/textChange">
         <button className="border-2 border-black px-3 py-2 rounded-lg bg-red-300">テキストチェンジ</button>
       </Link>
-      <Link href="/colorChange">
-        <button className="border-2 border-black px-3 py-2 rounded-lg bg-green-300">カラーチェンジ</button>
-      </Link>
       <Link href="/realTimeText">
         <button className="border-2 border-black px-3 py-2 rounded-lg bg-indigo-400">リアルタイムテキスト</button>
+      </Link>
+      <Link href="/colorChange">
+        <button className="border-2 border-black px-3 py-2 rounded-lg bg-green-300">カラーチェンジ</button>
       </Link>
 
     </div>
