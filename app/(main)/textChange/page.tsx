@@ -1,16 +1,8 @@
 "use client";
-import { useState } from 'react'
+import { textChangeHook } from './customHook';
 
 const TextChange = () => {
-    const [isHidden, setIsHidden] = useState(false);
-
-    const handleDisplay = () => {
-        setIsHidden(false);
-    }
-
-    const handleDisplayOff = () => {
-        setIsHidden(true);
-    }
+    const { isHidden, handleDisplay, handleDisplayOff } = textChangeHook();
 
     // const handleChange = () => {
     //     setIsHidden(!isHidden);
