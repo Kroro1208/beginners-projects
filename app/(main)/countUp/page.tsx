@@ -1,16 +1,9 @@
 "use client";
 import { NextPage } from 'next';
-import { useState } from 'react';
+import { CountUpDown } from './customHook';
 
 const CountUp: NextPage = () => {
-    const [count, setCount] = useState(0);
-    const countUpButton = () => {
-        setCount((prev) => prev + 1);
-    }
-
-    const countDownButton = () => {
-        setCount((prev) => prev - 1);
-    }
+    const { count, countUpButton, countDownButton } = CountUpDown();
 
     return (
         <div className='mx-auto mt-10 max-w-4xl'>
