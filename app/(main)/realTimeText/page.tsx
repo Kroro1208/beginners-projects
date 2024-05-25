@@ -1,12 +1,9 @@
 "use client";
 import { NextPage } from "next"
-import { ChangeEvent, useState } from "react"
+import { realTimeTextHook } from "./customHook";
 
 const RealTimeText: NextPage = () => {
-    const [text, setText] = useState("テキストを入力してね");
-    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setText(e.target.value)
-    }
+    const { text, handleInput } = realTimeTextHook();
     return (
         <div className='mx-auto mt-10 max-w-4xl'>
             <div className='flex flex-col gap-5 justify-center items-center'>

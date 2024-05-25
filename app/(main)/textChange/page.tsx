@@ -1,7 +1,8 @@
 "use client";
+import { NextPage } from 'next';
 import { textChangeHook } from './customHook';
 
-const TextChange = () => {
+const TextChange: NextPage = () => {
     const { isHidden, handleDisplay, handleDisplayOff } = textChangeHook();
 
     // const handleChange = () => {
