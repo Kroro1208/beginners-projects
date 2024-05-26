@@ -1,36 +1,19 @@
 "use client";
 import { NextPage } from "next"
-import { ChangeEvent, useState } from "react";
+import { ConvertNumberHook } from "./customHook";
 
-const Temperature: NextPage = () => {
-    const [temperature, setTemperature] = useState(0);
-    const [dollar, setDollar] = useState(0);
-    const [meter, setMeter] = useState(0);
-
-    const handleTemperatureChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setTemperature(Number(e.target.value));
-    }
-
-    const handleDollarChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setDollar(Number(e.target.value));
-    }
-
-    const handleMeterChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setMeter(Number(e.target.value));
-    }
-
-    const convertCtoF = (temperature: number) => {
-        return (temperature * 9) / 5 + 32;
-    }
-
-    const convertDollarToYen = (dollar: number) => {
-        const conversionRate = 155; // 為替レートは仮定値です
-        return dollar * conversionRate;
-    }
-
-    const convertMeterToFeet = (meter: number) => {
-        return meter * 3.28084;
-    }
+const ConvertNumber: NextPage = () => {
+    const {
+        temperature,
+        dollar,
+        meter,
+        handleTemperatureChange,
+        handleDollarChange,
+        handleMeterChange,
+        convertCtoF,
+        convertDollarToYen,
+        convertMeterToFeet,
+    } = ConvertNumberHook();
 
     return (
         <div className='flex flex-col justify-center items-center mx-auto mt-10 max-w-xl'>
@@ -66,4 +49,4 @@ const Temperature: NextPage = () => {
     )
 }
 
-export default Temperature
+export default ConvertNumber
