@@ -4,11 +4,14 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-6 justify-center items-center min-h-screen bg-gray-100">
       <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-800 drop-shadow-lg">
-        Reactアプリを作りながら学べる！
+        実際にReactアプリを作りながら学ぶ！
       </h1>
-      <h2 className="text-2xl font-bold text-gray-600 mb-5 italic">
+      <h2 className="text-2xl font-bold text-gray-600 mb-3 italic">
         初学者用学習ツール
       </h2>
+      <p className="text-xl font-bold text-gray-600 mb-2 italic">
+        Skills: Next.js, TypeScript, Tailwind CSS
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl px-4">
         <Link href="/count-updown">
           <div className="border-2 border-black rounded-lg bg-sky-200 hover:bg-sky-300
