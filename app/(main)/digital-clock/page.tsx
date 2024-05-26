@@ -1,21 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+import { DigitalClockHook } from "./customHook";
 
 const DigitalClock = () => {
-    const [currentTime, setCurrentTime] = useState<Date | null>(null);
-    const updateClock = () => {
-        setCurrentTime(new Date());
-    };
+    const { currentTime } = DigitalClockHook();
 
-    useEffect(() => {
-        // setInterval の呼び出しにより、タイマー識別子 (timerId) が返される
-        const timerId = window.setInterval(updateClock, 1000);
-        updateClock();
-        return () => {
-            window.clearInterval(timerId);
-        };
-
-    }, []);
 
     return (
         <div className="flex items-center justify-center h-screen bg-slate-300">
