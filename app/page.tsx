@@ -38,6 +38,12 @@ export default function Home() {
             コメント
           </div>
         </Link>
+        <Link href="/temperature-cvr">
+          <div className="border-2 border-black rounded-lg bg-slate-300 hover:bg-slate-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            温度変換
+          </div>
+        </Link>
       </div>
     </div>
   );
