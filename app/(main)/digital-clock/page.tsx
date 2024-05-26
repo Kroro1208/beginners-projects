@@ -3,16 +3,14 @@ import { useEffect, useState } from "react";
 
 const DigitalClock = () => {
     const [currentTime, setCurrentTime] = useState<Date | null>(null);
+    const updateClock = () => {
+        setCurrentTime(new Date());
+    };
 
     useEffect(() => {
-        const updateClock = () => {
-            setCurrentTime(new Date());
-        };
-
+        // setInterval の呼び出しにより、タイマー識別子 (timerId) が返される
         const timerId = window.setInterval(updateClock, 1000);
-
         updateClock();
-
         return () => {
             window.clearInterval(timerId);
         };
