@@ -29,7 +29,7 @@ const ConvertNumber: NextPage = () => {
                 </div>
 
                 <div className='mb-6'>
-                    <label htmlFor="dollar" className="block text-xl font-extrabold text-green-600 mb-2">1＄</label>
+                    <label htmlFor="dollar" className="block text-xl font-extrabold text-green-600 mb-2">＄</label>
                     <input
                         onChange={handleDollarChange}
                         type="number" id="dollar"

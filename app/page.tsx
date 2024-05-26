@@ -61,6 +61,12 @@ export default function Home() {
             デジタル時計
           </div>
         </Link>
+        <Link href="/random-words">
+          <div className="border-2 border-black rounded-lg bg-cyan-500 hover:bg-cyan-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            ランダムワード
+          </div>
+        </Link>
       </div>
     </div>
   );
