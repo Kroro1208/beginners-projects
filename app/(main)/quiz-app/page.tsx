@@ -1,62 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { QuizAppHook } from "./customHook";
+import { questions } from "./data";
+
 
 const Quiz = () => {
-    const questions = [
-        {
-            question: "直角三角形の斜辺の長さを求めるための定理は何ですか？",
-            choices: ["ピタゴラスの定理", "フェルマーの定理", "コーシーの定理", "相対性理論"],
-            correctAnswer: "ピタゴラスの定理"
-        },
-        {
-            question: "HTTPステータスコード404は何を意味しますか？",
-            choices: ["リクエスト成功", "サーバーエラー", "見つからない", "認証が必要"],
-            correctAnswer: "見つからない"
-        },
-        {
-            question: "RESTful APIの設計において、リソースの読み取りに使用されるHTTPメソッドはどれですか？",
-            choices: ["POST", "PUT", "DELETE", "GET"],
-            correctAnswer: "GET"
-        },
-        {
-            question: "データベースからデータを取得するための言語はどれですか？",
-            choices: ["JSON", "SQL", "Prisma", "Ruby"],
-            correctAnswer: "SQL"
-        },
-        {
-            question: "インターネット上でのデータ転送に使用される主要なプロトコルは何ですか？",
-            choices: ["FTP", "HTTP", "SMTP", "DNS"],
-            correctAnswer: "HTTP"
-        }
-    ];
-
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [choice, setChoice] = useState("");
-    const [answer, setAnswer] = useState("");
-    const [score, setScore] = useState(0);
-
-    const handleChoice = (item: string) => {
-        setChoice(item);
-    };
-
-    const handleAnswer = () => {
-        if (choice === questions[currentQuestionIndex].correctAnswer) {
-            setAnswer("Congratulation!!");
-            setScore(score + 1);
-        } else {
-            setAnswer("Try Again !");
-        }
-    };
-
-    const handleNextQuestion = () => {
-        setAnswer("");
-        setChoice("");
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-    };
+    const {
+        currentQuestionIndex,
+        choice,
+        answer,
+        score,
+        handleChoice,
+        handleAnswer,
+        handleNextQuestion,
+    } = QuizAppHook();
 
     return (
-        <div className='mx-auto mt-10 max-w-4xl'>
+        <div className='mx-auto mt-36 max-w-4xl'>
             <div className='flex justify-center'>
                 <div className='flex flex-col gap-3'>
                     {currentQuestionIndex < questions.length ? (
