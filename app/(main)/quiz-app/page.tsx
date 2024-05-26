@@ -1,8 +1,6 @@
 "use client";
-
 import { QuizAppHook } from "./customHook";
 import { questions } from "./data";
-
 
 const Quiz = () => {
     const {

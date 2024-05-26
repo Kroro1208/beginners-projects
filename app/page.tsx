@@ -50,6 +50,12 @@ export default function Home() {
             クイズアプリ
           </div>
         </Link>
+        <Link href="/digital-clock">
+          <div className="border-2 border-black rounded-lg bg-pink-300 hover:bg-pink-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            デジタル時計
+          </div>
+        </Link>
       </div>
     </div>
   );
