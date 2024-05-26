@@ -1,20 +1,9 @@
 "use client";
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-
-const cycleLights = { red: "green", yellow: "red", green: "yellow" } as const;
+import { TrafficLightsHook } from './customHook';
 
 const TrafficLight: NextPage = () => {
-  const [light, setLights] = useState<keyof typeof cycleLights>("green");
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      const nextLight = cycleLights[light];
-      setLights(nextLight);
-    }, 1000);
-
-    return () => clearTimeout(timerId);
-  }, [light]);
+  const { light } = TrafficLightsHook();
 
   return (
     <div className='flex flex-col items-center min-h-screen bg-gray-900'>
