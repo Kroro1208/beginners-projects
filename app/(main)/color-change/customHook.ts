@@ -18,7 +18,7 @@ type ColorChangeHook = () => {
 };
 
 export const ColorChange: ColorChangeHook = () => {
-  const [color, setColor] = useState("blue");
+  const [color, setColor] = useState("gray");
 
   const handleColorChange = () => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
