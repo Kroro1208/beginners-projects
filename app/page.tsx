@@ -35,13 +35,19 @@ export default function Home() {
         <Link href="/comment">
           <div className="border-2 border-black rounded-lg bg-yellow-300 hover:bg-yellow-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-            コメント
+            コメント機能
           </div>
         </Link>
         <Link href="/convert-number">
           <div className="border-2 border-black rounded-lg bg-slate-300 hover:bg-slate-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
             数値変換
+          </div>
+        </Link>
+        <Link href="/quiz-app">
+          <div className="border-2 border-black rounded-lg bg-orange-300 hover:bg-orange-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            クイズアプリ
           </div>
         </Link>
       </div>
