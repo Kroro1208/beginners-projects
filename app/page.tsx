@@ -49,12 +49,6 @@ export default function Home() {
             数値変換
           </div>
         </Link>
-        <Link href="/quiz-app">
-          <div className="border-2 border-black rounded-lg bg-orange-300 hover:bg-orange-400
-          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-            クイズアプリ
-          </div>
-        </Link>
         <Link href="/digital-clock">
           <div className="border-2 border-black rounded-lg bg-pink-300 hover:bg-pink-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
@@ -65,6 +59,18 @@ export default function Home() {
           <div className="border-2 border-black rounded-lg bg-cyan-500 hover:bg-cyan-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
             ランダムワード
+          </div>
+        </Link>
+        <Link href="/traffic-lights">
+          <div className="border-2 border-black rounded-lg bg-purple-400 hover:bg-purple-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            Traffic Lights
+          </div>
+        </Link>
+        <Link href="/quiz-app">
+          <div className="border-2 border-black rounded-lg bg-orange-300 hover:bg-orange-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            クイズアプリ
           </div>
         </Link>
       </div>
