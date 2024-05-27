@@ -1,6 +1,5 @@
 "use client";
 import { NextPage } from "next";
-import { useState } from "react";
 import { keys } from "./data";
 import { KeyBoardAppHook } from "./customHook";
 
