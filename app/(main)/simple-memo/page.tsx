@@ -1,6 +1,5 @@
 "use client";
 import { NextPage } from 'next';
-import { ChangeEvent, useState } from 'react';
 import { SimpleMemoHook } from './customHook';
 
 const SimpleMemo: NextPage = () => {
