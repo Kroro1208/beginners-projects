@@ -2,33 +2,10 @@
 
 import { NextPage } from "next";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-interface CharacterData {
-    name: string;
-    alternate_names: string[];
-    species: string;
-    gender: string;
-    house: string;
-    dateOfBirth: string;
-    yearOfBirth: number;
-    ancestry: string;
-    image: string;
-}
-
+import { HarryPotterHook } from "./customHook";
 
 const HarryPotter: NextPage = () => {
-    const [characters, setCharacters] = useState<CharacterData[]>([]);
-
-    useEffect(() => {
-        const fetchHarryPotter = async () => {
-            const response = await fetch('https://hp-api.onrender.com/api/characters');
-            const data: CharacterData[] = await response.json();
-            const filteredData = data.filter(character => character.image); // 画像があるキャラクターのみ
-            setCharacters(filteredData);
-        }
-        fetchHarryPotter();
-    }, []);
+    const { characters } = HarryPotterHook();
 
     return (
         <div className="container mx-auto p-4 bg-gray-900 min-h-screen">
@@ -50,7 +27,7 @@ const HarryPotter: NextPage = () => {
                         </div>
                         <h2 className="text-2xl font-bold mb-2 text-white">{character.name}</h2>
                         {character.alternate_names.length > 0 && (
-                            <p className="text-gray-400 mb-2">ニックネーム: {character.alternate_names.join(', ')}</p>
+                            <p className="text-gray-400 mb-2">呼ばれ方: {character.alternate_names.join(', ')}</p>
                         )}
                         <p className="text-gray-400 mb-2">種族: {character.species}</p>
                         <p className="text-gray-400 mb-2">性別: {character.gender}</p>
