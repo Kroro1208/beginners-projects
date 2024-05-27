@@ -25,6 +25,7 @@ export const HarryPotterHook: UseHarryPotterAPI = () => {
         "https://hp-api.onrender.com/api/characters"
       );
       const data: CharacterData[] = await response.json();
+      console.log(data);
       const filteredData = data.filter((character) => character.image); // 画像があるキャラクターのみ
       setCharacters(filteredData);
     };

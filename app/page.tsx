@@ -49,6 +49,12 @@ export default function Home() {
               コメント機能
             </div>
           </Link>
+          <Link href="/simple-memo">
+            <div className="border-2 border-black rounded-lg bg-green-600 hover:bg-green-400
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              Simple Memo
+            </div>
+          </Link>
           <Link href="/convert-number">
             <div className="border-2 border-black rounded-lg bg-slate-300 hover:bg-slate-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
