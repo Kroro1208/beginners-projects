@@ -12,12 +12,12 @@ export const DigitalClockHook: UseDigitalClock = () => {
   };
 
   useEffect(() => {
-    const timerId = window.setInterval(updateClock, 1000);
+    const timerId = setInterval(updateClock, 1000);
 
     updateClock();
 
     return () => {
-      window.clearInterval(timerId);
+      clearInterval(timerId);
     };
   }, []);
 
