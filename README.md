@@ -4,8 +4,8 @@
 2. 作成するアプリは難易度順になっています。
 3. コミットはリファクタリング前と後に分けていますので、アプリごとのコミットを確認しながら作成していきましょう。
 
-![アプリ概要](react-app.png)
-![コミット概要](commit.png)
+![アプリ概要](/react-app.png)
+![コミット概要](/commit.png)
 
 ## Getting Started
 
@@ -19,3 +19,4 @@ yarn dev
 pnpm dev
 # or
 bun dev
+```
