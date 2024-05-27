@@ -75,6 +75,12 @@ export default function Home() {
             Keyboard App
           </div>
         </Link>
+        <Link href="/stop-watch">
+          <div className="border-2 border-black rounded-lg bg-blue-500 hover:bg-blue-400
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            ストップウォッチ
+          </div>
+        </Link>
         <Link href="/quiz-app">
           <div className="border-2 border-black rounded-lg bg-orange-300 hover:bg-orange-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
