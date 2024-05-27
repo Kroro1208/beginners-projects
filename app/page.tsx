@@ -3,10 +3,12 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex flex-col gap-6 justify-center items-center min-h-screen bg-gray-100">
-      <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-800 drop-shadow-lg">
+      <h1 className="text-2xl mt-3 sm:mt-4 md:text-3xl md:mt-5 lg:text-4xl lg:mt-6 font-extrabold bg-clip-text
+      text-transparent bg-gradient-to-r from-blue-300 to-blue-800 drop-shadow-lg">
         実際にReactアプリを作りながら学ぶ！
       </h1>
-      <h2 className="text-2xl font-bold text-gray-600 mb-3 italic">
+
+      <h2 className="text-xl lg:text-2xl font-bold text-gray-600 mb-3 italic">
         初学者用学習ツール
       </h2>
       <p className="text-xl font-bold text-gray-600 mb-2 italic">
@@ -65,6 +67,12 @@ export default function Home() {
           <div className="border-2 border-black rounded-lg bg-purple-400 hover:bg-purple-400
           px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
             Traffic Lights
+          </div>
+        </Link>
+        <Link href="/keyboard-app">
+          <div className="border-2 border-black rounded-lg bg-red-400 hover:bg-red-600
+          px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+            Keyboard App
           </div>
         </Link>
         <Link href="/quiz-app">
