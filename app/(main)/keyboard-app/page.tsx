@@ -12,8 +12,6 @@ const KeyBoardApp: NextPage = () => {
         clearKeyClick,
     } = KeyBoardAppHook();
 
-
-
     return (
         <div className='mx-auto h-screen bg-gray-500 w-full'>
             <div className='flex flex-col gap-5 justify-center items-center'>

@@ -33,7 +33,6 @@ export const KeyBoardAppHook: UseKeyBoard = () => {
       if (!hasClicked) {
         return prev;
       }
-
       return prev.slice(0, -1); // 最後の文字を削除
     });
   };
