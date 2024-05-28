@@ -1,29 +1,15 @@
 "use client";
 import { NextPage } from 'next';
-import { useRef, useState } from 'react';
+import { SimpleTodoHook } from './customHook';
 
 const SimpleTodo: NextPage = () => {
-    const [memo, setMemo] = useState<{ text: string; isComplete: boolean }[]>([]);
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-    const handleMemo = () => {
-        const textAreaValue = textAreaRef.current?.value;
-        if (!textAreaValue || !textAreaValue.trim()) return;
-        setMemo((prev) => [...prev, { text: textAreaValue, isComplete: false }]);
-        textAreaRef.current.value = ''; // テキストエリアをクリア
-    };
-
-    const completeMemo = (index: number) => {
-        setMemo((prev) =>
-            prev.map((item, i) =>
-                i === index ? { ...item, isComplete: !item.isComplete } : item
-            )
-        );
-    };
-
-    const deleteMemo = (index: number) => {
-        setMemo((prev) => prev.filter((_, i) => i !== index));
-    };
+    const {
+        memo,
+        textAreaRef,
+        handleMemo,
+        completeMemo,
+        deleteMemo,
+    } = SimpleTodoHook();
 
     return (
         <div className="max-w-4xl mx-auto mt-8 p-4">
