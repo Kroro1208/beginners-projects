@@ -1,53 +1,23 @@
 "use client";
-import { ChangeEvent, useState } from 'react';
+import { FilterSystemHook } from './customHook';
 
 const FilterSystem = () => {
-    const [userName, setName] = useState("");
-    const [userAge, setAge] = useState("");
-    const [userGender, setGender] = useState("");
-    const [userData, setUserData] = useState<Array<{ name: string, age: string, gender: string }>>([]);
-    const [searchName, setSearchName] = useState("");
-    const [searchAge, setSearchAge] = useState("");
-    const [searchGender, setSearchGender] = useState("");
-
-    const handleInputName = (e: ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value);
-    }
-
-    const handleInputAge = (e: ChangeEvent<HTMLInputElement>) => {
-        setAge(e.target.value);
-    }
-
-    const handleInputGender = (e: ChangeEvent<HTMLSelectElement>) => {
-        setGender(e.target.value);
-    }
-
-    const handleSubmit = () => {
-        if (!userName.trim() || !userAge.trim() || !userGender.trim()) return;
-        const newUser = { name: userName, age: userAge, gender: userGender };
-        setUserData((prev) => [...prev, newUser]);
-        setName('');
-        setAge('');
-        setGender('');
-    }
-
-    const handleSearchInputName = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchName(e.target.value);
-    }
-
-    const handleSearchInputAge = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchAge(e.target.value);
-    }
-
-    const handleSearchInputGender = (e: ChangeEvent<HTMLSelectElement>) => {
-        setSearchGender(e.target.value);
-    }
-
-    const filteringUser = userData.filter(user =>
-        user.name.toLowerCase().includes(searchName.toLowerCase()) &&
-        (searchAge === "" || user.age === searchAge) &&
-        (searchGender === "" || user.gender === searchGender)
-    );
+    const {
+        userName,
+        userAge,
+        userGender,
+        searchName,
+        searchAge,
+        searchGender,
+        handleInputName,
+        handleInputAge,
+        handleInputGender,
+        handleSubmit,
+        handleSearchInputName,
+        handleSearchInputAge,
+        handleSearchInputGender,
+        filteringUser,
+    } = FilterSystemHook();
 
     return (
         <div className='max-w-7xl min-h-screen mx-auto mt-10 p-6 bg-gradient-to-r from-blue-100 via-pink-100 to-purple-100 rounded-lg shadow-2xl flex gap-10'>
@@ -122,13 +92,15 @@ const FilterSystem = () => {
                         </select>
                         <ul className='mt-4 border-t'>
                             {filteringUser.map((data, index) => (
-                                <li key={index} className={`flex justify-between border-b p-4 ${data.gender === "女性" ? 'bg-pink-100' : 'bg-blue-100'} rounded-lg`}>
-                                    <span>{data.name}</span>
-                                    <span>{data.age}</span>
-                                    <span>{data.gender}</span>
+                                <li key={index}
+                                    className={`flex items-center justify-between border-b p-4 ${data.gender === "女性" ? 'bg-pink-100' : 'bg-blue-100'} rounded-lg`}>
+                                    <span className='flex-1'>{data.name}</span>
+                                    <span className='w-20 text-center'>{data.age}</span>
+                                    <span className='w-20 text-center'>{data.gender}</span>
                                 </li>
                             ))}
                         </ul>
+
                     </div>
                 </div>
             </div>
