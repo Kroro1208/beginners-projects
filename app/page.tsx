@@ -55,6 +55,12 @@ export default function Home() {
               Simple Memo
             </div>
           </Link>
+          <Link href="/simple-todo">
+            <div className="border-2 border-black rounded-lg bg-red-600 hover:bg-red-400
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              Simple Todo
+            </div>
+          </Link>
           <Link href="/convert-number">
             <div className="border-2 border-black rounded-lg bg-slate-300 hover:bg-slate-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
