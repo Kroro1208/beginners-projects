@@ -54,14 +54,14 @@ const SimpleDiary = () => {
                         <ul>
                             {diaryList.map((item, index) => (
                                 <li key={index} className='relative mb-4 bg-gradient-to-r from-slate-200 to-slate-300 p-4 rounded-lg shadow-lg text-gray-800'>
-                                    <div className="absolute top-0 left-0 w-full h-2 bg-gray-500 rounded-t-lg" />
-                                    <div className='flex justify-between items-center'>
-                                        <div>
+                                    <div className="absolute top-0 left-0 w-full h-2 bg-gray-500 rounded-t-lg"></div>
+                                    <div className='flex flex-col'>
+                                        <div className='flex-1'>
                                             <h3 className='text-lg font-semibold'>{item.title}</h3>
-                                            <p className='mt-2'>{item.content}</p>
+                                            <p className='mt-2 break-words'>{item.content}</p>
                                             <p className='mt-1'>{item.date}</p>
                                         </div>
-                                        <div>
+                                        <div className='absolute bottom-4 right-4'>
                                             <button
                                                 onClick={() => handleEditDiary(index)}
                                                 className='bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-400 transition-all duration-300 shadow-lg'>
@@ -72,6 +72,7 @@ const SimpleDiary = () => {
                                 </li>
                             ))}
                         </ul>
+
                     </div>
                 </div>
             </div>
