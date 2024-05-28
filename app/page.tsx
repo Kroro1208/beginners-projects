@@ -121,6 +121,12 @@ export default function Home() {
               Filtering System
             </div>
           </Link>
+          <Link href="/fibonacci">
+            <div className="border-2 border-black rounded-lg bg-amber-700 hover:bg-amber-500
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              Fibonacci
+            </div>
+          </Link>
         </div>
       </div>
     </div>
