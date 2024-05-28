@@ -18,7 +18,7 @@ const SimpleMemo: NextPage = () => {
                     <h1 className="text-3xl font-mono text-pink-600 mb-4">Memo</h1>
                     <textarea
                         onChange={handleText}
-                        value={inputText}
+                        value={inputText} // 双方向データバインディング
                         className="resize-none w-72 h-24 border border-pink-400 rounded-lg text-center p-5 focus:outline-none focus:ring-2 focus:ring-pink-500 shadow-inner"
                         placeholder="メモを入力" />
                     <div className="mt-4">
