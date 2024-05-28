@@ -115,6 +115,12 @@ export default function Home() {
               クイズアプリ
             </div>
           </Link>
+          <Link href="/filter-app">
+            <div className="border-2 border-black rounded-lg bg-gray-300 hover:bg-gray-400
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              Filtering System
+            </div>
+          </Link>
         </div>
       </div>
     </div>
