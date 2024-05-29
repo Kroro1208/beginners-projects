@@ -5,9 +5,6 @@ const DragAndDrop = () => {
   return (
     <div>
       <TaskCard />
-      <TaskCard />
-      <TaskCard />
-      <TaskCard />
     </div>
   )
 }

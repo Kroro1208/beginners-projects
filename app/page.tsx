@@ -18,7 +18,7 @@ export default function Home() {
             Skills: Next.js, TypeScript, Tailwind CSS
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl p-4 mb-10">
           <Link href="/count-updown">
             <div className="border-2 border-black rounded-lg bg-sky-200 hover:bg-sky-300
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
@@ -125,6 +125,12 @@ export default function Home() {
             <div className="border-2 border-black rounded-lg bg-amber-700 hover:bg-amber-500
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
               Fibonacci
+            </div>
+          </Link>
+          <Link href="/drag&drop">
+            <div className="border-2 text-white border-black rounded-lg bg-blue-950 hover:bg-blue-800
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              Drag & Drop
             </div>
           </Link>
         </div>

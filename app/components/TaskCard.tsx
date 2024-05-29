@@ -17,6 +17,11 @@ export const TaskCard = () => {
     setColumns([...columns, columnToAdd])
   };
 
+  const deleteColumn = (id: string | number) => {
+    const filterColumns = columns.filter((col) => col.id !== id);
+    setColumns(filterColumns)
+  }
+
   const generateId = () => {
     return Math.floor(Math.random() * 10001);
   };
@@ -26,7 +31,7 @@ export const TaskCard = () => {
       <div className="m-auto flex gap-4">
         <div className="text-white flex gap-2">
           {columns.map((col) => (
-            <ColumnContainer column={col} />
+            <ColumnContainer column={col} deleteColum={deleteColumn} />
           ))}
         </div>
         <button
