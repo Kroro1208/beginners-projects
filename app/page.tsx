@@ -22,31 +22,31 @@ export default function Home() {
           <Link href="/count-updown">
             <div className="border-2 border-black rounded-lg bg-sky-200 hover:bg-sky-300
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              カウントアップ
+              Count Up&Down
             </div>
           </Link>
           <Link href="/text-change">
             <div className="border-2 border-black rounded-lg bg-red-300 hover:bg-red-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              テキストチェンジ
+              Text On & Off
             </div>
           </Link>
           <Link href="/realtime-text">
             <div className="border-2 border-black rounded-lg bg-indigo-400 hover:bg-indigo-500
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              リアルタイムテキスト
+              Realtime Text
             </div>
           </Link>
           <Link href="/color-change">
             <div className="border-2 border-black rounded-lg bg-green-300 hover:bg-green-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              カラーチェンジ
+              Change Color
             </div>
           </Link>
           <Link href="/comment">
             <div className="border-2 border-black rounded-lg bg-yellow-300 hover:bg-yellow-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              コメント機能
+              Add Comments
             </div>
           </Link>
           <Link href="/simple-memo">
@@ -70,19 +70,19 @@ export default function Home() {
           <Link href="/convert-number">
             <div className="border-2 border-black rounded-lg bg-slate-300 hover:bg-slate-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              数値変換
+              Calc Converter
             </div>
           </Link>
           <Link href="/digital-clock">
             <div className="border-2 border-black rounded-lg bg-pink-300 hover:bg-pink-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              デジタル時計
+              Digital Clock
             </div>
           </Link>
           <Link href="/random-words">
             <div className="border-2 border-black rounded-lg bg-cyan-500 hover:bg-cyan-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              ランダムワード
+              Random Words
             </div>
           </Link>
           <Link href="/traffic-lights">
@@ -100,7 +100,7 @@ export default function Home() {
           <Link href="/stop-watch">
             <div className="border-2 border-black rounded-lg bg-blue-500 hover:bg-blue-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              ストップウォッチ
+              G-shock
             </div>
           </Link>
           <Link href="/harry-potter">
@@ -112,7 +112,7 @@ export default function Home() {
           <Link href="/quiz-app">
             <div className="border-2 border-black rounded-lg bg-orange-300 hover:bg-orange-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              クイズアプリ
+              Quiz App
             </div>
           </Link>
           <Link href="/filter-app">
