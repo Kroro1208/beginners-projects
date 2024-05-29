@@ -26,7 +26,7 @@ export const TaskCard = () => {
 
   // column作成ボタン内で使用するidを作成する関数
   const generateId = () => {
-    return Math.floor(Math.random() * 10001);
+    return Math.floor(Math.random() * 1001);
   };
 
   return (
@@ -42,7 +42,7 @@ export const TaskCard = () => {
           className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2
         rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-rose-500 hover:ring-2">
           <PlusIcon />
-          タスク追加
+          カラム追加
         </button>
       </div>
     </div>

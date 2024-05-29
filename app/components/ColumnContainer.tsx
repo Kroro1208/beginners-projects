@@ -14,7 +14,7 @@ export const ColumnContainer = (props: Props) => {
             font-bold border-slate-700 border-4 flex items-center justify-between">
                 <div className="flex gap-2">
                     <div className="flex justify-center items-center bg-slate-700 px-2 py-1 text-sm rounded-full">
-                        0
+                        {column.id}
                     </div>
                     {column.title}
                 </div>
