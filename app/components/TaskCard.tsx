@@ -9,6 +9,7 @@ export const TaskCard = () => {
   const [columns, setColumns] = useState<Column[]>([]);
   console.log(columns);
 
+  // column作成ボタン
   const createNewColumn = () => {
     const columnToAdd: Column = {
       id: generateId(),
@@ -17,11 +18,13 @@ export const TaskCard = () => {
     setColumns([...columns, columnToAdd])
   };
 
+  // column削除ボタン
   const deleteColumn = (id: string | number) => {
     const filterColumns = columns.filter((col) => col.id !== id);
     setColumns(filterColumns)
   }
 
+  // column作成ボタン内で使用するidを作成する関数
   const generateId = () => {
     return Math.floor(Math.random() * 10001);
   };
