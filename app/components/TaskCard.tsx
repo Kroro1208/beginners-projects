@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { PlusIcon } from "./icon/PlusIcon"
 import { Column } from "../(main)/drag&drop/types";
+import { ColumnContainer } from "./ColumnContainer";
 
 export const TaskCard = () => {
 
@@ -22,7 +23,12 @@ export const TaskCard = () => {
 
   return (
     <div className="m-auto flex min-h-screen w-full items-center overflow-x-auto overflow-y-auto px-[40px] bg-slate-900">
-      <div className="m-auto">
+      <div className="m-auto flex gap-4">
+        <div className="text-white flex gap-2">
+          {columns.map((col) => (
+            <ColumnContainer column={col} />
+          ))}
+        </div>
         <button
           onClick={createNewColumn}
           className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2
