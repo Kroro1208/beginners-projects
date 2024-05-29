@@ -7,9 +7,6 @@ interface Props {
 }
 export const ColumnContainer = (props: Props) => {
     const { column, deleteColum } = props;
-    const deleteButton = () => {
-
-    }
 
     return (
         <div className="bg-slate-800 w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col">

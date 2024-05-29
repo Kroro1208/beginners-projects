@@ -34,7 +34,7 @@ export const TaskCard = () => {
       <div className="m-auto flex gap-4">
         <div className="text-white flex gap-2">
           {columns.map((col) => (
-            <ColumnContainer column={col} deleteColum={deleteColumn} />
+            <ColumnContainer key={col.id} column={col} deleteColum={deleteColumn} />
           ))}
         </div>
         <button
