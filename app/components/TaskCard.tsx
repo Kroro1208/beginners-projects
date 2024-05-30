@@ -3,8 +3,8 @@ import { useMemo, useState } from "react"
 import { PlusIcon } from "./icon/PlusIcon"
 import { Column } from "../(main)/drag&drop/types";
 import { ColumnContainer } from "./ColumnContainer";
-import { DndContext, DragOverlay, DragStartEvent } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
+import { DndContext, DragEndEvent, DragOverlay, DragStartEvent, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 
 export const TaskCard = () => {
@@ -12,6 +12,11 @@ export const TaskCard = () => {
   const [columns, setColumns] = useState<Column[]>([]);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
+  const sensors = useSensors(useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 300,
+    }
+  }))
 
   // column作成ボタン
   const createNewColumn = () => {
@@ -41,14 +46,34 @@ export const TaskCard = () => {
     }
   }
 
+  const onDragEnd = (e: DragEndEvent) => {
+    const { active, over } = e;
+    const activeColumnId = active?.id;
+    const overColumnId = over?.id;
+    if (activeColumnId === overColumnId) return;
+    setColumns((columns) => {
+      const activeColumnIndex = columns.findIndex((col) => col.id === activeColumnId);
+      const overColumnIndex = columns.findIndex((col) => col.id === overColumnId);
+      return arrayMove(columns, activeColumnIndex, overColumnIndex);
+    })
+  }
+
+  const updateColumn = (id: string | number, title: string) => {
+    const newColumns = columns.map((col) => {
+      if (col.id !== id) return col;
+      return { ...col, title };
+    });
+    setColumns(newColumns);
+  }
+
   return (
     <div className="m-auto flex min-h-screen w-full items-center overflow-x-auto overflow-y-auto px-[40px] bg-slate-900">
-      <DndContext onDragStart={onDragStart}>
+      <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd} sensors={sensors}>
         <div className="m-auto flex gap-4">
           <div className="text-white flex gap-2">
             <SortableContext items={columnsId}>
               {columns.map((col) => (
-                <ColumnContainer key={col.id} column={col} deleteColum={deleteColumn} />
+                <ColumnContainer key={col.id} column={col} deleteColum={deleteColumn} updateColumn={updateColumn} />
               ))}
             </SortableContext>
           </div>
@@ -62,7 +87,7 @@ export const TaskCard = () => {
         </div>
         {createPortal(
           <DragOverlay>
-            {activeColumn && <ColumnContainer column={activeColumn} deleteColum={deleteColumn} />}
+            {activeColumn && <ColumnContainer column={activeColumn} deleteColum={deleteColumn} updateColumn={updateColumn} />}
           </DragOverlay>,
           document.body
         )}
