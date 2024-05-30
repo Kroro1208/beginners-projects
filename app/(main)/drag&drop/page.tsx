@@ -1,10 +1,10 @@
-import { TaskCard } from '@/app/components/TaskCard'
+import { KanbanBoard } from '@/app/components/KanbanBoard'
 import React from 'react'
 
 const DragAndDrop = () => {
   return (
     <div>
-      <TaskCard />
+      <KanbanBoard />
     </div>
   )
 }
