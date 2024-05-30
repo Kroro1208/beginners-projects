@@ -17,8 +17,8 @@ export const ColumnContainer = (props: Props) => {
         data: {
             type: "Column",
             column,
-            disabled: editMode
         },
+        disabled: editMode
     });
 
     const style = {
@@ -31,10 +31,8 @@ export const ColumnContainer = (props: Props) => {
             <div ref={setNodeRef} style={style}
                 className="bg-slate-800 w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col
                 opacity-40 border-2 border-rose-500"
-            >
-
-            </div>
-        )
+            />
+        );
     }
 
     return (

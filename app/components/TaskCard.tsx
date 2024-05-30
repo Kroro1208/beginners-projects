@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { PlusIcon } from "./icon/PlusIcon"
 import { Column } from "../(main)/drag&drop/types";
 import { ColumnContainer } from "./ColumnContainer";
@@ -14,9 +14,15 @@ export const TaskCard = () => {
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
   const sensors = useSensors(useSensor(PointerSensor, {
     activationConstraint: {
-      distance: 300,
+      distance: 3,
     }
   }))
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // column作成ボタン
   const createNewColumn = () => {
@@ -85,7 +91,7 @@ export const TaskCard = () => {
             カラム追加
           </button>
         </div>
-        {createPortal(
+        {mounted && createPortal(
           <DragOverlay>
             {activeColumn && <ColumnContainer column={activeColumn} deleteColum={deleteColumn} updateColumn={updateColumn} />}
           </DragOverlay>,
