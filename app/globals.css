@@ -17,5 +17,5 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-rose-500 rounded-xl;
+  @apply bg-sky-500 rounded-xl;
 }
