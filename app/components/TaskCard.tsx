@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react"
 import { PlusIcon } from "./icon/PlusIcon"
-import { Column } from "../(main)/drag&drop/types";
+import { Column, Id, Task } from "../(main)/drag&drop/types";
 import { ColumnContainer } from "./ColumnContainer";
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
@@ -10,11 +10,12 @@ import { createPortal } from "react-dom";
 export const TaskCard = () => {
 
   const [columns, setColumns] = useState<Column[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
   const sensors = useSensors(useSensor(PointerSensor, {
     activationConstraint: {
-      distance: 3,
+      distance: 10,
     }
   }))
 
@@ -34,7 +35,7 @@ export const TaskCard = () => {
   };
 
   // column削除ボタン
-  const deleteColumn = (id: string | number) => {
+  const deleteColumn = (id: Id) => {
     const filterColumns = columns.filter((col) => col.id !== id);
     setColumns(filterColumns)
   }
@@ -64,12 +65,21 @@ export const TaskCard = () => {
     })
   }
 
-  const updateColumn = (id: string | number, title: string) => {
+  const updateColumn = (id: Id, title: string) => {
     const newColumns = columns.map((col) => {
       if (col.id !== id) return col;
       return { ...col, title };
     });
     setColumns(newColumns);
+  }
+
+  const createTask = (columnId: Id) => {
+    const newTask: Task = {
+      id: generateId(),
+      columnId,
+      content: `Task ${tasks.length + 1}`
+    };
+    setTasks([...tasks, newTask]);
   }
 
   return (
@@ -79,7 +89,12 @@ export const TaskCard = () => {
           <div className="text-white flex gap-2">
             <SortableContext items={columnsId}>
               {columns.map((col) => (
-                <ColumnContainer key={col.id} column={col} deleteColum={deleteColumn} updateColumn={updateColumn} />
+                <ColumnContainer
+                  key={col.id} column={col}
+                  deleteColum={deleteColumn}
+                  updateColumn={updateColumn}
+                  createTask={createTask}
+                  tasks={tasks.filter((task) => task.columnId === col.id)} />
               ))}
             </SortableContext>
           </div>
@@ -93,7 +108,14 @@ export const TaskCard = () => {
         </div>
         {mounted && createPortal(
           <DragOverlay>
-            {activeColumn && <ColumnContainer column={activeColumn} deleteColum={deleteColumn} updateColumn={updateColumn} />}
+            {activeColumn &&
+              <ColumnContainer
+                column={activeColumn}
+                deleteColum={deleteColumn}
+                updateColumn={updateColumn}
+                createTask={createTask}
+                tasks={tasks}
+              />}
           </DragOverlay>,
           document.body
         )}
