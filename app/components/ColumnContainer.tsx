@@ -36,7 +36,7 @@ export const ColumnContainer = (props: Props) => {
         return (
             <div ref={setNodeRef} style={style}
                 className="bg-slate-800 w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col
-                opacity-40 border-2 border-rose-500"
+                opacity-40 border-2 border-green-500"
             />
         );
     }

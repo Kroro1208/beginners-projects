@@ -117,7 +117,7 @@ export const KanbanBoard = () => {
           <button
             onClick={createNewColumn}
             className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2
-          rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-rose-500 hover:ring-2">
+          rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2">
             <PlusIcon />
             カラム追加
           </button>
