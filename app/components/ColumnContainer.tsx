@@ -4,16 +4,18 @@ import { DeleteIcon } from "./icon/DeleteIcon";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
 import { PlusIcon } from "./icon/PlusIcon";
+import { TaskCard } from "./TaskCard";
 
 interface Props {
     column: Column;
     deleteColum: (id: Id) => void;
     updateColumn: (id: Id, title: string) => void;
     createTask: (columnId: Id) => void;
+    deleteTask: (id: Id) => void;
     tasks: Task[];
 }
 export const ColumnContainer = (props: Props) => {
-    const { column, deleteColum, updateColumn, createTask, tasks } = props;
+    const { column, deleteColum, updateColumn, createTask, tasks, deleteTask } = props;
     const [editMode, setEditMode] = useState(false);
     const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
         id: column.id,
@@ -73,8 +75,7 @@ export const ColumnContainer = (props: Props) => {
             </div>
             <div className="flex flex-grow flex-col gap-4 p-2 overflow-x-hidden overflow-y-auto">
                 {tasks.map((task) => (
-                    <div className="border border-slate-600 rounded-md px-3 py-2"
-                        key={task.id}>{task.content}</div>
+                    <TaskCard key={task.id} task={task} deleteTask={deleteTask} />
                 ))}
             </div>
             <button

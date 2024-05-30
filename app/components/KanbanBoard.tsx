@@ -82,6 +82,11 @@ export const KanbanBoard = () => {
     setTasks([...tasks, newTask]);
   }
 
+  const deleteTask = (id: Id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="m-auto flex min-h-screen w-full items-center overflow-x-auto overflow-y-auto px-[40px] bg-slate-900">
       <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd} sensors={sensors}>
@@ -94,6 +99,7 @@ export const KanbanBoard = () => {
                   deleteColum={deleteColumn}
                   updateColumn={updateColumn}
                   createTask={createTask}
+                  deleteTask={deleteTask}
                   tasks={tasks.filter((task) => task.columnId === col.id)} />
               ))}
             </SortableContext>
@@ -114,7 +120,8 @@ export const KanbanBoard = () => {
                 deleteColum={deleteColumn}
                 updateColumn={updateColumn}
                 createTask={createTask}
-                tasks={tasks}
+                deleteTask={deleteTask}
+                tasks={tasks.filter((task) => task.columnId === activeColumn.id)}
               />}
           </DragOverlay>,
           document.body
