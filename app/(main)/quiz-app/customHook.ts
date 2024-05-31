@@ -26,7 +26,7 @@ export const QuizAppHook: UseQuizApp = () => {
       setAnswer("Congratulation!!");
       setScore(score + 1);
     } else {
-      setAnswer("Try Again !");
+      setAnswer("残念...");
     }
   };
 
