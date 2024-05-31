@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 
 interface CharacterData {
-  name: string;
-  alternate_names: string[];
-  species: string;
-  gender: string;
-  house: string;
-  dateOfBirth: string;
-  yearOfBirth: number;
-  ancestry: string;
+  index: number;
+  fullName: string;
+  nickname: string;
+  hogwartsHouse: string;
+  interpretedBy: string;
+  birthdate: string;
+  children: string[];
   image: string;
 }
 
@@ -22,7 +21,7 @@ export const HarryPotterHook: UseHarryPotterAPI = () => {
   useEffect(() => {
     const fetchHarryPotter = async () => {
       const response = await fetch(
-        "https://hp-api.onrender.com/api/characters"
+        "https://potterapi-fedeperin.vercel.app/es/characters"
       );
       const data: CharacterData[] = await response.json();
       console.log(data);
