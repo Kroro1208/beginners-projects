@@ -13,6 +13,7 @@ const SimpleDiary = () => {
         handleSelectDate,
         handlePostDiary,
         handleEditDiary,
+        handleDeleteDiary
     } = UseSimpleDiaryHook();
 
     return (
@@ -61,11 +62,16 @@ const SimpleDiary = () => {
                                             <p className='mt-2 break-words'>{item.content}</p>
                                             <p className='mt-1'>{item.date}</p>
                                         </div>
-                                        <div className='absolute bottom-4 right-4'>
+                                        <div className='absolute flex gap-2 bottom-4 right-4'>
                                             <button
                                                 onClick={() => handleEditDiary(index)}
                                                 className='bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-400 transition-all duration-300 shadow-lg'>
                                                 編集
+                                            </button>
+                                            <button
+                                                onClick={() => handleDeleteDiary(index)}
+                                                className='bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-400 transition-all duration-300 shadow-lg'>
+                                                削除
                                             </button>
                                         </div>
                                     </div>

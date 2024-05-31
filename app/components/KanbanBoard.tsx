@@ -22,7 +22,7 @@ export const KanbanBoard = () => {
     }
   }))
 
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false); // mountedでコンポーネントがマウントされたかどうかを追跡
 
   useEffect(() => {
     setMounted(true);
@@ -69,6 +69,8 @@ export const KanbanBoard = () => {
     if (!over) return;
     const activeId = active?.id;
     const overId = over?.id;
+
+    // カラム全体のドラッグ＆ドロップ
     if (activeId === overId) return;
     setColumns((columns) => {
       const activeColumnIndex = columns.findIndex((col) => col.id === activeId);
@@ -84,7 +86,7 @@ export const KanbanBoard = () => {
     const activeId = active?.id;
     const overId = over?.id;
 
-    if (activeId === overId) return; // ドラッグしている要素が自分自身の上にある場合
+    if (activeId === overId) return; // ドラッグしている要素が自分自身の上にある場合(つまり移動していない場合)
     const isActiveTask = active.data.current?.type === "Task";
     const isOverTask = over.data.current?.type === "Task";
 
@@ -95,12 +97,13 @@ export const KanbanBoard = () => {
         const activeIndex = tasks?.findIndex((t) => t.id === activeId);
         const overIndex = tasks?.findIndex((t) => t.id === overId);
 
-        tasks[activeIndex].columnId = tasks[overIndex].columnId;
+        tasks[activeIndex].columnId = tasks[overIndex].columnId; // 移動先のカラムにタスクを入れる
 
-        return arrayMove(tasks, activeIndex, overIndex);
+        return arrayMove(tasks, activeIndex, overIndex); // タスクの順序を変更
       });
     }
-    const isOverColumn = over.data.current?.type === "Column";
+
+    const isOverColumn = over.data.current?.type === "Column"; // 現在ドラッグしているタスクがカラム上にあるか
 
     if (isActiveTask && isOverColumn) {
       setTasks((tasks) => {

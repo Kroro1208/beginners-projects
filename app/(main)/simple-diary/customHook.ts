@@ -17,6 +17,7 @@ type UseSimpleDiary = () => {
   handleSelectDate: (e: ChangeEvent<HTMLInputElement>) => void;
   handlePostDiary: () => void;
   handleEditDiary: (index: number) => void;
+  handleDeleteDiary: (index: number) => void;
 };
 
 export const UseSimpleDiaryHook: UseSimpleDiary = () => {
@@ -65,6 +66,11 @@ export const UseSimpleDiaryHook: UseSimpleDiary = () => {
     setEditIndex(index);
   };
 
+  const handleDeleteDiary = (index: number) => {
+    const updatedDiaryList = diaryList.filter((_, i) => i !== index);
+    setDiaryList(updatedDiaryList);
+  };
+
   return {
     diaryList,
     title,
@@ -76,5 +82,6 @@ export const UseSimpleDiaryHook: UseSimpleDiary = () => {
     handleSelectDate,
     handlePostDiary,
     handleEditDiary,
+    handleDeleteDiary,
   };
 };
