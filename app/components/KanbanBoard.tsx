@@ -40,7 +40,9 @@ export const KanbanBoard = () => {
   // column削除ボタン
   const deleteColumn = (id: Id) => {
     const filterColumns = columns.filter((col) => col.id !== id);
-    setColumns(filterColumns)
+    setColumns(filterColumns);
+    const newTasks = tasks.filter((t) => t.columnId !== id);
+    setTasks(newTasks);
   }
 
   // column作成ボタン内で使用するidを作成する関数
@@ -64,7 +66,7 @@ export const KanbanBoard = () => {
     setActiveColumn(null);
     setActiveTask(null);
     const { active, over } = e;
-    if(!over) return;
+    if (!over) return;
     const activeId = active?.id;
     const overId = over?.id;
     if (activeId === overId) return;
@@ -77,18 +79,18 @@ export const KanbanBoard = () => {
 
   const onDragOver = (e: DragOverEvent) => {
     const { active, over } = e;
-    if(!over) return;
+    if (!over) return; // ドラッグ中の要素が他の要素の上にない場合
 
     const activeId = active?.id;
     const overId = over?.id;
 
-    if (activeId === overId) return;
+    if (activeId === overId) return; // ドラッグしている要素が自分自身の上にある場合
     const isActiveTask = active.data.current?.type === "Task";
     const isOverTask = over.data.current?.type === "Task";
 
-    if(!isActiveTask) return;
+    if (!isActiveTask) return;
 
-    if(isActiveTask && isOverTask){
+    if (isActiveTask && isOverTask) {
       setTasks((tasks) => {
         const activeIndex = tasks?.findIndex((t) => t.id === activeId);
         const overIndex = tasks?.findIndex((t) => t.id === overId);
@@ -98,16 +100,16 @@ export const KanbanBoard = () => {
         return arrayMove(tasks, activeIndex, overIndex);
       });
     }
-      const isOverColumn = over.data.current?.type === "Column";
+    const isOverColumn = over.data.current?.type === "Column";
 
-      if(isActiveTask && isOverColumn){
-        setTasks((tasks) => {
-          const activeIndex = tasks?.findIndex((t) => t.id === activeId);
-          tasks[activeIndex].columnId = overId;
-  
-          return arrayMove(tasks, activeIndex, activeIndex);
-        });
-      }
+    if (isActiveTask && isOverColumn) {
+      setTasks((tasks) => {
+        const activeIndex = tasks?.findIndex((t) => t.id === activeId);
+        tasks[activeIndex].columnId = overId;
+
+        return arrayMove(tasks, activeIndex, activeIndex);
+      });
+    }
   }
 
   const updateColumn = (id: Id, title: string) => {
@@ -142,29 +144,32 @@ export const KanbanBoard = () => {
   }
 
   return (
-    <div className="m-auto flex min-h-screen w-full items-center overflow-x-auto overflow-y-auto px-[40px] bg-slate-900">
+    <div className="m-auto flex flex-col items-center min-h-screen w-full overflow-x-auto overflow-y-auto px-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+      <h1 className="text-4xl font-bold text-white my-8">Awesome Task Management Board</h1>
       <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd} onDragOver={onDragOver} sensors={sensors}>
-        <div className="m-auto flex gap-4">
+        <div className="flex gap-4">
           <div className="text-white flex gap-2">
             <SortableContext items={columnsId}>
               {columns.map((col) => (
                 <ColumnContainer
-                  key={col.id} column={col}
+                  key={col.id}
+                  column={col}
                   deleteColum={deleteColumn}
                   updateColumn={updateColumn}
                   createTask={createTask}
                   updatedTask={updatedTask}
                   deleteTask={deleteTask}
-                  tasks={tasks.filter((task) => task.columnId === col.id)} />
+                  tasks={tasks.filter((task) => task.columnId === col.id)}
+                />
               ))}
             </SortableContext>
           </div>
           <button
             onClick={createNewColumn}
-            className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2
-          rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2">
+            className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2 items-center justify-center
+            rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2 transition-all duration-300">
             <PlusIcon />
-            カラム追加
+            タスクボード追加
           </button>
         </div>
         {mounted && createPortal(
@@ -179,7 +184,7 @@ export const KanbanBoard = () => {
                 deleteTask={deleteTask}
                 tasks={tasks.filter((task) => task.columnId === activeColumn.id)}
               />)}
-              { activeTask && <TaskCard task={activeTask} deleteTask={deleteTask} updatedTask={updatedTask}/> }
+            {activeTask && <TaskCard task={activeTask} deleteTask={deleteTask} updatedTask={updatedTask} />}
           </DragOverlay>,
           document.body
         )}
