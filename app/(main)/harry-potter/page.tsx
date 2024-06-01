@@ -26,12 +26,12 @@ const HarryPotter: NextPage = () => {
               />
             </div>
             <h2 className="text-2xl font-bold mb-2 text-white">{character.fullName}</h2>
-            <p className="text-gray-400 mb-2">Nickname: {character.nickname}</p>
-            <p className="text-gray-400 mb-2">House: {character.hogwartsHouse}</p>
-            <p className="text-gray-400 mb-2">Interpreted by: {character.interpretedBy}</p>
-            <p className="text-gray-400 mb-2">Birthdate: {character.birthdate}</p>
+            <p className="text-gray-400 mb-2">ニックネーム: {character.nickname}</p>
+            <p className="text-gray-400 mb-2">チーム名: {character.hogwartsHouse}</p>
+            <p className="text-gray-400 mb-2">俳優名: {character.interpretedBy}</p>
+            <p className="text-gray-400 mb-2">誕生日: {character.birthdate}</p>
             {character.children.length > 0 && (
-              <p className="text-gray-400 mb-2">Children: {character.children.join(', ')}</p>
+              <p className="text-gray-400 mb-2">子供: {character.children.join(', ')}</p>
             )}
           </div>
         ))}
