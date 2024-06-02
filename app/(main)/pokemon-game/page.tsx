@@ -10,6 +10,7 @@ const PokemonGame = () => {
   const [flippedCard, setFlippedCard] = useState<number[]>([]);
   const [matchCards, setMatchCards] = useState<number[]>([]);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isCongratulationsOpen, setIsCongratulationsOpen] = useState<boolean>(false);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
@@ -47,10 +48,11 @@ const PokemonGame = () => {
       if (pokemons[firstIndex] && pokemons[secondIndex]) {
         if (pokemons[firstIndex].name === pokemons[secondIndex].name) {
           setMatchCards([...matchCards, firstIndex, secondIndex]);
+          setIsCongratulationsOpen(true); // おめでとうポップアップを表示
         }
       }
 
-      setTimeout(() => setFlippedCard([]), 5000);
+      setTimeout(() => setFlippedCard([]), 3500);
     }
   };
 
@@ -65,9 +67,13 @@ const PokemonGame = () => {
     setIsOpenModal(true);
   };
 
+  const handleCongratulationsClose = () => {
+    setIsCongratulationsOpen(false);
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 w-full">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-200 to-green-400">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4 w-full max-w-screen-xl mx-auto">
         {pokemons.map((pokemon, index) => (
           <Card
             image={pokemon.image}
@@ -81,17 +87,33 @@ const PokemonGame = () => {
       <Dialog
         className="fixed inset-0 z-50 flex items-center justify-center"
         open={isOpenModal} onClose={handleModalClose}>
-        <div className="fixed inset-0 bg-black opacity-30 z-40" />
-        <div className="bg-white p-4 rounded z-50 flex flex-col items-center">
+        <div className="fixed inset-0 bg-black opacity-50 z-40" />
+        <div className="bg-white p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
           {selectedPokemon && (
             <div className="flex flex-col items-center justify-center">
               <img src={selectedPokemon.image} alt={selectedPokemon.name} className="w-48 h-48 object-contain" />
-              <p className="mt-4">{selectedPokemon.name}</p>
+              <p className="mt-4 text-lg font-bold">{selectedPokemon.name}</p>
             </div>
           )}
           <button
-            className="bg-white text-black rounded-lg px-3 py-2 mt-4 border-slate-200 border-2 border-b-4 active:border-b-2 hover:bg-slate-100 hover:text-slate-500"
+            className="bg-red-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-red-700 active:border-b-2 hover:bg-red-400"
             onClick={handleModalClose}
+          >
+            閉じる
+          </button>
+        </div>
+      </Dialog>
+      <Dialog
+        className="fixed inset-0 z-50 flex items-center justify-center"
+        open={isCongratulationsOpen} onClose={handleCongratulationsClose}>
+        <div className="fixed inset-0 bg-black opacity-50 z-40" />
+        <div className="bg-gradient-to-r from-orange-300 to-yellow-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
+          <p className="mt-4 text-2xl text-white font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 animate-pulse">
+            おめでとう！その調子で頑張って！
+          </p>
+          <button
+            className="bg-green-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-green-700 active:border-b-2 hover:bg-green-400"
+            onClick={handleCongratulationsClose}
           >
             閉じる
           </button>
