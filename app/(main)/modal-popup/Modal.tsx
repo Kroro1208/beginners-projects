@@ -1,3 +1,4 @@
+import { CloseIcon } from '@/app/components/icon/Closeicon';
 import React from 'react'
 
 type Props = {
@@ -15,9 +16,8 @@ export const Modal: React.FC<Props> = ({ open, onClose, children }) => {
         ${open ? "scale-100 opacity-100" : "scale-110 opacity-0"}`}>
         <button
           onClick={onClose}
-          className='absolute top-2 right-1 px-3 bg-gray-500 py-1 rounded-lg text-white
-          hover:bg-gray-500/90 border-gray-600 border-b-4 active:border-b-0'>
-          X
+          className='absolute top-2 right-2'>
+          <CloseIcon />
         </button>
         {/* このchildrenにはModalタグ内のコンテンツが渡ってくる */}
         {children}

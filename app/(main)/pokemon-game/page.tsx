@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Pokemon } from "./type";
 import { Dialog } from '@headlessui/react';
 import axios from "axios";
+import Image from 'next/image';
 import Card from "@/app/components/Card";
 
 const PokemonGame = () => {
@@ -72,7 +73,7 @@ const PokemonGame = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-200 to-green-400">
+    <div className="flex justify-center items-center min-h-screen bg-indigo-300">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4 w-full max-w-screen-xl mx-auto">
         {pokemons.map((pokemon, index) => (
           <Card
@@ -91,7 +92,7 @@ const PokemonGame = () => {
         <div className="bg-white p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
           {selectedPokemon && (
             <div className="flex flex-col items-center justify-center">
-              <img src={selectedPokemon.image} alt={selectedPokemon.name} className="w-48 h-48 object-contain" />
+              <Image src={selectedPokemon.image} alt={selectedPokemon.name} width={192} height={192} className="object-contain" />
               <p className="mt-4 text-lg font-bold">{selectedPokemon.name}</p>
             </div>
           )}
@@ -108,7 +109,7 @@ const PokemonGame = () => {
         open={isCongratulationsOpen} onClose={handleCongratulationsClose}>
         <div className="fixed inset-0 bg-black opacity-50 z-40" />
         <div className="bg-gradient-to-r from-orange-300 to-yellow-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
-          <p className="mt-4 text-2xl text-white font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 animate-pulse">
+          <p className="mt-4 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 animate-pulse">
             おめでとう！その調子で頑張って！
           </p>
           <button
