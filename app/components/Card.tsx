@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image, onClick, isFlipped, isMatched }) => {
     return (
         <div
-            className={`card ${isMatched ? "opacity-50" : ""} w-24 h-24 flex justify-center items-center`}
+            className={`card ${isMatched ? "opacity-50" : ""} flex justify-center items-center p-4`}
             onClick={onClick}
             style={{ cursor: isMatched ? "default" : "pointer" }}
         >
@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ image, onClick, isFlipped, isMatched }) => 
                 alt="Pokemon"
                 width={80}
                 height={80}
-                className="rounded object-contain"
+                className="object-contain"
             />
         </div>
     );

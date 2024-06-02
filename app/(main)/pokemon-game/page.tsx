@@ -50,7 +50,7 @@ const PokemonGame = () => {
         }
       }
 
-      setTimeout(() => setFlippedCard([]), 3000);
+      setTimeout(() => setFlippedCard([]), 5000);
     }
   };
 
@@ -67,7 +67,7 @@ const PokemonGame = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 w-full p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 w-full">
         {pokemons.map((pokemon, index) => (
           <Card
             image={pokemon.image}

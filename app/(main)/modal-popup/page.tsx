@@ -17,7 +17,7 @@ const ModalPage = () => {
                 <div className='flex flex-col gap-4 items-center'>
                     <h1 className='text-2xl font-mono'>ポケモン神経衰弱ゲーム!!</h1>
                     <p className='text-md font-semibold whitespace-pre-wrap'>
-                        ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br/>カードを2枚開い後、3秒で見れなくなるからすぐ覚えてね
+                        ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br/>カードを2枚開い後、5秒で見れなくなるからすぐ覚えてね
                     </p>
 
                     <div className='flex items-center justify-center gap-3'>
