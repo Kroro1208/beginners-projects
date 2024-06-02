@@ -21,9 +21,9 @@ const ModalPage = () => {
                     <p className='text-lg font-semibold text-start'>
                         ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br />
                         <br />
-                        1. カードを2枚開いたら3~4秒で見れなくなるよ！<br />
+                        1. カードを2枚開いたら、3~4秒で見れなくなるからしっかり覚えてね<br />
                         2. ゲームの制限時間は5分だ!<br />
-                        3. 一組当てるごとに10ポイント付与されるよ!
+                        3. ひと組当てるごとに10ポイントが追加されるよ!
                     </p>
                     <div className='flex items-center justify-center gap-4'>
                         <Link href={"/pokemon-game"}>
