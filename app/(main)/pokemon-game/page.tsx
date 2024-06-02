@@ -89,7 +89,7 @@ const PokemonGame = () => {
   };
 
   const handleRestart = () => {
-    setTimeLeft(60);
+    setTimeLeft(300);
     setScore(0);
     setMatchCards([]);
     setIsGameOver(false);
@@ -99,9 +99,10 @@ const PokemonGame = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-200 to-green-400 relative">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-gray-200 to-gray-400 relative">
+      {/* TODO コンポーネント化 */}
       <div className="absolute top-4 left-40">
-        <div className="bg-white rounded-full p-4 shadow-md flex items-center justify-center w-32 h-32">
+        <div className="bg-indigo-700 text-white rounded-2xl p-4 shadow-lg flex items-center justify-center w-32 h-32">
           <div className="text-center">
             <div className="text-xl font-bold">残り時間</div>
             <div className="text-4xl font-bold">{timeLeft}s</div>
@@ -109,7 +110,7 @@ const PokemonGame = () => {
         </div>
       </div>
       <div className="absolute top-4 right-40">
-        <div className="bg-white rounded-full p-4 shadow-md flex items-center justify-center w-32 h-32">
+        <div className="bg-green-600 text-white rounded-2xl p-4 shadow-lg flex items-center justify-center w-32 h-32">
           <div className="text-center">
             <div className="text-xl font-bold">Score</div>
             <div className="text-4xl font-bold">{score}</div>
@@ -171,7 +172,7 @@ const PokemonGame = () => {
         <div className="bg-gradient-to-r from-red-300 to-pink-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
           <p className="mt-4 text-2xl font-extrabold text-white">時間切れ！ゲームオーバー</p>
           <button
-            className="bg-blue-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-blue-700 active:border-b-2 hover:bg-blue-400"
+            className="bg-gray-700 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-gray-800 active:border-b-2 hover:bg-gray-400"
             onClick={handleRestart}
           >
             もう一度
