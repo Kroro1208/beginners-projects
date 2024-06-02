@@ -97,40 +97,46 @@ export default function Home() {
               13 Keyboard App
             </div>
           </Link>
+          <Link href="/modal-popup">
+            <div className="border-2 text-white border-gray-500 rounded-lg bg-blue-950 hover:bg-blue-800
+            px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              14 Modal PopUp
+            </div>
+          </Link>
           <Link href="/stop-watch">
             <div className="border-2 border-gray-500 rounded-lg bg-blue-500 hover:bg-blue-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              14 G-shock
+              15 G-shock
             </div>
           </Link>
           <Link href="/harry-potter">
             <div className="border-2 border-gray-500 rounded-lg bg-green-500 hover:bg-green-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              15 Harry Potter API
+              16 Harry Potter API
             </div>
           </Link>
           <Link href="/quiz-app">
             <div className="border-2 border-gray-500 rounded-lg bg-orange-300 hover:bg-orange-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              16 Quiz App
+              17 Quiz App
             </div>
           </Link>
           <Link href="/filter-app">
             <div className="border-2 border-gray-500 rounded-lg bg-gray-300 hover:bg-gray-400
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              17 Filtering System
+              18 Filtering System
             </div>
           </Link>
           <Link href="/fibonacci">
             <div className="border-2 border-gray-500 rounded-lg bg-amber-700 hover:bg-amber-500
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              18 Fibonacci
+              19 Fibonacci
             </div>
           </Link>
           <Link href="/drag&drop">
             <div className="border-2 text-white border-gray-500 rounded-lg bg-blue-950 hover:bg-blue-800
             px-6 py-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
-              19 Drag & Drop
+              20 Drag & Drop
             </div>
           </Link>
         </div>
