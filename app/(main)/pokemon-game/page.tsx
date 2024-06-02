@@ -5,6 +5,7 @@ import { Dialog } from '@headlessui/react';
 import axios from "axios";
 import Image from 'next/image';
 import Card from "@/app/components/Card";
+import Link from "next/link";
 
 const PokemonGame = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -119,7 +120,7 @@ const PokemonGame = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4 w-full max-w-screen-xl mx-auto">
         {pokemons.map((pokemon, index) => (
-          
+
           <Card
             image={pokemon.image}
             key={index}
@@ -153,8 +154,8 @@ const PokemonGame = () => {
         className="fixed inset-0 z-50 flex items-center justify-center"
         open={isCongratulationsOpen} onClose={handleCongratulationsClose}>
         <div className="fixed inset-0 bg-black opacity-50 z-40" />
-        <div className="bg-gradient-to-r from-orange-300 to-yellow-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
-          <p className="mt-4 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600 animate-pulse">
+        <div className="bg-gradient-to-r from-orange-400 to-orange-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
+          <p className="mt-4 text-white text-2xl font-extrabold text-transparent">
             おめでとう！その調子で頑張って！
           </p>
           <button
@@ -169,14 +170,24 @@ const PokemonGame = () => {
         className="fixed inset-0 z-50 flex items-center justify-center"
         open={isGameOver} onClose={handleRestart}>
         <div className="fixed inset-0 bg-black opacity-50 z-40" />
-        <div className="bg-gradient-to-r from-red-300 to-pink-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
+        <div className="bg-gradient-to-r from-red-300 to-pink-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg gap-2">
           <p className="mt-4 text-2xl font-extrabold text-white">時間切れ！ゲームオーバー</p>
+          <p className="text-white text-xl">
+            あなたのスコアは{score}点でした
+          </p>
           <button
-            className="bg-gray-700 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-gray-800 active:border-b-2 hover:bg-gray-400"
+            className="bg-green-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-green-700 active:border-b-2 hover:bg-green-600"
             onClick={handleRestart}
           >
             もう一度
           </button>
+          <Link href={"/modal-popup"}>
+            <button
+              className="bg-gray-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-gray-700 active:border-b-2 hover:bg-gray-600"
+            >
+              やめておく
+            </button>
+          </Link>
         </div>
       </Dialog>
     </div>
