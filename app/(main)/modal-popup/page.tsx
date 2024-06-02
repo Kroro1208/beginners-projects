@@ -15,15 +15,16 @@ const ModalPage = () => {
             </button>
             <Modal open={open} onClose={() => setOpen(false)} >
                 <div className='flex flex-col gap-6 items-center'>
-                    <h1 className='text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600'>
-                        ポケモン神経衰弱ゲーム!!
+                    <h1 className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-600'>
+                        POKEMON CONCENTRATION
                     </h1>
-                    <p className='text-md font-semibold text-center'>
+                    <p className='text-lg font-semibold text-start'>
                         ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br />
-                        カードを2枚開いたら3秒で見れなくなるよ！<br />
-                        ゲームの制限時間は5分だ!
+                        <br />
+                        1. カードを2枚開いたら3~4秒で見れなくなるよ！<br />
+                        2. ゲームの制限時間は5分だ!<br />
+                        3. 一組当てるごとに10ポイント付与されるよ!
                     </p>
-
                     <div className='flex items-center justify-center gap-4'>
                         <Link href={"/pokemon-game"}>
                             <button className="bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 border-green-700 border-b-4 active:border-b-0 transition-all transform active:scale-95">
