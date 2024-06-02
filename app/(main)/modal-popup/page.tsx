@@ -19,9 +19,9 @@ const ModalPage = () => {
                         ポケモン神経衰弱ゲーム!!
                     </h1>
                     <p className='text-md font-semibold text-center'>
-                        ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br/>
-                        カードを2枚開いたら3秒で見れなくなるからすぐ覚えてね。
-                        ゲームの制限時間は5分だよ!
+                        ポケモンAPIを活用した神経衰弱ゲームを体験 !!<br />
+                        カードを2枚開いたら3秒で見れなくなるよ！<br />
+                        ゲームの制限時間は5分だ!
                     </p>
 
                     <div className='flex items-center justify-center gap-4'>

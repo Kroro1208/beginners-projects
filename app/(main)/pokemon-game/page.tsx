@@ -22,12 +22,13 @@ const PokemonGame = () => {
       try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30');
         const results = response.data.results;
+        console.log(results);
 
         const pokemonPromises = results.map(async (pokemon: any) => {
           const res = await axios.get(pokemon.url);
           return {
             name: pokemon.name,
-            image: res.data.sprites.other['official-artwork'].front_default || '/default-image.png'
+            image: res.data.sprites.other['official-artwork'].front_default || '画像がありません'
           };
         });
 
@@ -117,12 +118,14 @@ const PokemonGame = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4 w-full max-w-screen-xl mx-auto">
         {pokemons.map((pokemon, index) => (
+          
           <Card
             image={pokemon.image}
             key={index}
             onClick={() => handleCardClickModal(index)}
             isFlipped={flippedCard.includes(index)}
             isMatched={matchCards.includes(index)}
+            number={index + 1}
           />
         ))}
       </div>
