@@ -13,6 +13,9 @@ const PokemonGame = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [isCongratulationsOpen, setIsCongratulationsOpen] = useState<boolean>(false);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+  const [timeLeft, setTimeLeft] = useState<number>(300); // タイムリミットを60秒に設定
+  const [score, setScore] = useState<number>(0); // スコア初期値を設定
+  const [isGameOver, setIsGameOver] = useState<boolean>(false); // ゲームオーバー状態を管理
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +40,17 @@ const PokemonGame = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    } else {
+      setIsGameOver(true);
+    }
+  }, [timeLeft]);
+
   const handleCardClick = (index: number) => {
     if (flippedCard.length === 2 || matchCards.includes(index)) return;
     setFlippedCard([...flippedCard, index]);
@@ -49,6 +63,7 @@ const PokemonGame = () => {
       if (pokemons[firstIndex] && pokemons[secondIndex]) {
         if (pokemons[firstIndex].name === pokemons[secondIndex].name) {
           setMatchCards([...matchCards, firstIndex, secondIndex]);
+          setScore(score + 10); // スコアを加算
           setIsCongratulationsOpen(true); // おめでとうポップアップを表示
         }
       }
@@ -72,8 +87,34 @@ const PokemonGame = () => {
     setIsCongratulationsOpen(false);
   };
 
+  const handleRestart = () => {
+    setTimeLeft(60);
+    setScore(0);
+    setMatchCards([]);
+    setIsGameOver(false);
+    setIsCongratulationsOpen(false);
+    setSelectedPokemon(null);
+    setFlippedCard([]);
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-indigo-300">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-200 to-green-400 relative">
+      <div className="absolute top-4 left-40">
+        <div className="bg-white rounded-full p-4 shadow-md flex items-center justify-center w-32 h-32">
+          <div className="text-center">
+            <div className="text-xl font-bold">残り時間</div>
+            <div className="text-4xl font-bold">{timeLeft}s</div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute top-4 right-40">
+        <div className="bg-white rounded-full p-4 shadow-md flex items-center justify-center w-32 h-32">
+          <div className="text-center">
+            <div className="text-xl font-bold">Score</div>
+            <div className="text-4xl font-bold">{score}</div>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4 w-full max-w-screen-xl mx-auto">
         {pokemons.map((pokemon, index) => (
           <Card
@@ -117,6 +158,20 @@ const PokemonGame = () => {
             onClick={handleCongratulationsClose}
           >
             閉じる
+          </button>
+        </div>
+      </Dialog>
+      <Dialog
+        className="fixed inset-0 z-50 flex items-center justify-center"
+        open={isGameOver} onClose={handleRestart}>
+        <div className="fixed inset-0 bg-black opacity-50 z-40" />
+        <div className="bg-gradient-to-r from-red-300 to-pink-500 p-6 rounded-lg z-50 flex flex-col items-center shadow-lg">
+          <p className="mt-4 text-2xl font-extrabold text-white">時間切れ！ゲームオーバー</p>
+          <button
+            className="bg-blue-500 text-white rounded-lg px-4 py-2 mt-4 border-b-4 border-blue-700 active:border-b-2 hover:bg-blue-400"
+            onClick={handleRestart}
+          >
+            もう一度
           </button>
         </div>
       </Dialog>
