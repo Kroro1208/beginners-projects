@@ -1,6 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import { useDispatch } from "react-redux";
 import { decrease, increase, removeItem } from '../features/cart/CartSlice';
+import { TrashIcon } from "./icon/TrashIcon";
+import { PlusIcon } from "./icon/PlusIcon";
+import { MinusIcon } from "./icon/MinusIcon";
 
 
 type Props = {
@@ -24,21 +27,21 @@ const CartItem = ({ id, img, title, price, amount }: Props) => {
                     <button
                         onClick={() => dispatch(removeItem(id))}
                         className='text-red-500 hover:text-red-700'>
-                        {/* Trash Icon */}
+                        <TrashIcon />
                     </button>
                 </div>
             </div>
-            <div>
+            <div className="flex items-center">
                 <button
                     onClick={() => dispatch(increase(id))}
                     className='text-green-500 hover:text-green-700'>
-                    {/* PlusIcon */}
+                    <PlusIcon />
                 </button>
                 <p className="mx-2">{amount}</p>
                 <button
                     onClick={() => dispatch(decrease(id))}
                     className='text-red-500 hover:text-red-700'>
-                    {/* Minus Icon */}
+                    <MinusIcon />
                 </button>
             </div>
         </article>
