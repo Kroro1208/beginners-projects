@@ -139,6 +139,12 @@ export default function Home() {
               20 Drag & Drop
             </div>
           </Link>
+          <Link href="/redux-toolkit">
+            <div className="border-2 hover:text-white border-gray-500 rounded-lg bg-green-300 hover:bg-green-400
+            px-4 p-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              21 Redux Toolkit Shop Cart
+            </div>
+          </Link>
         </div>
       </div>
     </div>
