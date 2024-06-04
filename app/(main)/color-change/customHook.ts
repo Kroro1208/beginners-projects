@@ -17,7 +17,7 @@ type ColorChangeHook = () => {
   handleColorChange: () => void;
 };
 
-export const ColorChange: ColorChangeHook = () => {
+export const useColorChangeText: ColorChangeHook = () => {
   const [color, setColor] = useState("gray");
 
   const handleColorChange = () => {

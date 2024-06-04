@@ -1,9 +1,9 @@
 "use client";
 import { NextPage } from "next"
-import { realTimeTextHook } from "./customHook";
+import { useRealTimeText } from "./customHook";
 
 const RealTimeText: NextPage = () => {
-    const { text, handleInput } = realTimeTextHook();
+    const { text, handleInput } = useRealTimeText();
     return (
         <div className='mx-auto mt-10 max-w-4xl'>
             <div className='flex flex-col gap-5 justify-center items-center'>

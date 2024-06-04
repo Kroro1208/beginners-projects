@@ -5,7 +5,7 @@ type realTimeHook = () => {
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const realTimeTextHook: realTimeHook = () => {
+export const useRealTimeText: realTimeHook = () => {
   const [text, setText] = useState("テキストを入力してね");
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);

@@ -7,7 +7,7 @@ type CommentHook = () => {
   handleSubmit: () => void;
 };
 
-export const CommentChat: CommentHook = () => {
+export const useCommentChatText: CommentHook = () => {
   const [inputText, setInputText] = useState("");
   const [commentList, setCommentList] = useState<string[]>([]);
 

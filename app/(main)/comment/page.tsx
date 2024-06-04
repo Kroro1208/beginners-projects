@@ -1,9 +1,9 @@
 "use client";
 import { NextPage } from "next"
-import { CommentChat } from "./customHook";
+import { useCommentChatText } from "./customHook";
 
 const Comment: NextPage = () => {
-    const { inputText, commentList, handleInputComment, handleSubmit } = CommentChat();
+    const { inputText, commentList, handleInputComment, handleSubmit } = useCommentChatText();
 
     return (
         <div className="max-w-4xl mx-auto mt-8">
