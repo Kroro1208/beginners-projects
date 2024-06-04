@@ -4,7 +4,8 @@ export default function Home() {
   return (
     <div className="relative flex flex-col gap-6 justify-center items-center min-h-screen bg-gray-100">
       <div className="absolute inset-0 bg-cover bg-center opacity-75"
-        style={{ backgroundImage: "url('/react.png')" }}></div>
+        style={{ backgroundImage: "url('/react.png')" }}>
+      </div>
       <div className="relative z-10">
         <div className="flex flex-col gap-5 mb-5">
           <h1 className="text-2xl mt-3 sm:mt-4 md:text-3xl md:mt-5 lg:text-4xl lg:mt-6 font-extrabold bg-clip-text
