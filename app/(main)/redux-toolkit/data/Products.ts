@@ -1,7 +1,7 @@
-import nikeImg1 from "../../assets/nike.jpg";
-import nikeImg2 from "../../assets/nike2.jpg";
-import nikeImg3 from "../../assets/nike3.jpg";
-import nikeImg4 from "../../assets/nike4.jpg";
+import nikeImg1 from "../assets/nike.jpg";
+import nikeImg2 from "../assets/nike2.jpg";
+import nikeImg3 from "../assets/nike3.jpg";
+import nikeImg4 from "../assets/nike4.jpg";
 import { CartItem } from "../types";
 
 export const Products: CartItem[] = [
