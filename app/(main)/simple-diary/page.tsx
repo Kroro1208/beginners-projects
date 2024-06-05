@@ -1,5 +1,5 @@
 "use client";
-import { UseSimpleDiaryHook } from "./customHook";
+import { useSimpleDiaryText } from "./customHook";
 
 const SimpleDiary = () => {
     const {
@@ -14,7 +14,7 @@ const SimpleDiary = () => {
         handlePostDiary,
         handleEditDiary,
         handleDeleteDiary
-    } = UseSimpleDiaryHook();
+    } = useSimpleDiaryText();
 
     return (
         <div className='mx-auto mt-8 max-w-4xl p-4 min-h-screen bg-gradient-to-r from-orange-100 via-orange-100 to-blue-100'>

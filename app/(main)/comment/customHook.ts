@@ -1,13 +1,13 @@
 import { ChangeEvent, useState } from "react";
 
-type CommentHook = () => {
+type UseComment = () => {
   inputText: string;
   commentList: string[];
   handleInputComment: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   handleSubmit: () => void;
 };
 
-export const useCommentChatText: CommentHook = () => {
+export const useCommentChatText: UseComment = () => {
   const [inputText, setInputText] = useState("");
   const [commentList, setCommentList] = useState<string[]>([]);
 

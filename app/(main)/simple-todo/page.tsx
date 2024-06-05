@@ -1,6 +1,6 @@
 "use client";
 import { NextPage } from 'next';
-import { SimpleTodoHook } from './customHook';
+import { useSimpleTodoText } from './customHook';
 
 const SimpleTodo: NextPage = () => {
     const {
@@ -9,7 +9,7 @@ const SimpleTodo: NextPage = () => {
         handleMemo,
         completeMemo,
         deleteMemo,
-    } = SimpleTodoHook();
+    } = useSimpleTodoText();
 
     return (
         <div className="max-w-4xl mx-auto mt-8 p-4">

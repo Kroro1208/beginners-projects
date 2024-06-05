@@ -11,7 +11,7 @@ type UseSimpleTodo = () => {
   deleteMemo: (index: number) => void;
 };
 
-export const SimpleTodoHook: UseSimpleTodo = () => {
+export const useSimpleTodoText: UseSimpleTodo = () => {
   const [memo, setMemo] = useState<{ text: string; isComplete: boolean }[]>([]);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 

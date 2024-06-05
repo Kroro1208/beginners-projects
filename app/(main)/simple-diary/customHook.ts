@@ -20,7 +20,7 @@ type UseSimpleDiary = () => {
   handleDeleteDiary: (index: number) => void;
 };
 
-export const UseSimpleDiaryHook: UseSimpleDiary = () => {
+export const useSimpleDiaryText: UseSimpleDiary = () => {
   const [diaryList, setDiaryList] = useState<Diary[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

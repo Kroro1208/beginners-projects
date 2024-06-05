@@ -1,6 +1,6 @@
 "use client";
 import { NextPage } from 'next';
-import { SimpleMemoHook } from './customHook';
+import { useSimpleMemoText } from './customHook';
 
 const SimpleMemo: NextPage = () => {
     const {
@@ -9,7 +9,7 @@ const SimpleMemo: NextPage = () => {
         handleText,
         handleMemo,
         deleteMemo,
-    } = SimpleMemoHook();
+    } = useSimpleMemoText();
 
     return (
         <div className="max-w-4xl mx-auto mt-8">

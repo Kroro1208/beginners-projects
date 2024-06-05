@@ -8,7 +8,7 @@ type UseSimpleMemo = () => {
   deleteMemo: (index: number) => void;
 };
 
-export const SimpleMemoHook: UseSimpleMemo = () => {
+export const useSimpleMemoText: UseSimpleMemo = () => {
   const [inputText, setInputText] = useState("");
   const [memo, setMemo] = useState<string[]>([]);
 
