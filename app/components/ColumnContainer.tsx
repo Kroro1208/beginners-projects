@@ -54,7 +54,7 @@ export const ColumnContainer = (props: Props) => {
                 {...attributes}
                 {...listeners}
                 onClick={() => setEditMode(true)}
-                className="bg-sky-700 h-[60px] cursor-grab rounded-md rounded-b-none p-3
+                className="bg-green-600 h-[60px] cursor-grab rounded-md rounded-b-none p-3
             font-bold border-slate-700 border-4 flex items-center justify-between">
                 <div className="flex gap-2">
                     <div className="flex justify-center items-center bg-slate-700 px-2 py-1 text-sm rounded-full">

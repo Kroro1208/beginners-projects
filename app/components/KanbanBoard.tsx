@@ -147,7 +147,7 @@ export const KanbanBoard = () => {
   }
 
   return (
-    <div className="m-auto flex flex-col items-center min-h-screen w-full overflow-x-auto overflow-y-auto px-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+    <div className="m-auto flex flex-col items-center min-h-screen w-full overflow-x-auto overflow-y-auto px-8 bg-gradient-to-r from-slate-400 via-gray-600 to-gray-750">
       <h1 className="text-4xl font-bold text-white my-8">Awesome Task Management Board</h1>
       <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd} onDragOver={onDragOver} sensors={sensors}>
         <div className="flex gap-4">
