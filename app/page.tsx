@@ -146,6 +146,12 @@ export default function Home() {
               21 Redux Toolkit Shop Cart
             </div>
           </Link>
+          <Link href="/pomodoro-timer">
+            <div className="border-2 hover:text-white border-gray-500 rounded-lg bg-red-300 hover:bg-red-800
+            px-4 p-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              22 Pomodoro-Timer
+            </div>
+          </Link>
         </div>
       </div>
     </div>
