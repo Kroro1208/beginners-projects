@@ -68,6 +68,7 @@ export const useSimpleDiaryText: UseSimpleDiary = () => {
 
   const handleDeleteDiary = (index: number) => {
     const updatedDiaryList = diaryList.filter((_, i) => i !== index);
+    alert("本当に削除しますか?");
     setDiaryList(updatedDiaryList);
   };
 
