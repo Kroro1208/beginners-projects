@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useMemo, useState } from "react"
 import { PlusIcon } from "./icon/PlusIcon"
-import { Column, Id, Task } from "../(main)/drag&drop/types";
+import type { Column, Id, Task } from "../(main)/drag&drop/types";
 import { ColumnContainer } from "./ColumnContainer";
-import { DndContext, DragEndEvent, DragOverEvent, DragOverlay, DragStartEvent, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { DndContext, type DragEndEvent, type DragOverEvent, DragOverlay, type DragStartEvent, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 import { TaskCard } from "./TaskCard";
@@ -168,6 +168,7 @@ export const KanbanBoard = () => {
             </SortableContext>
           </div>
           <button
+            type="button"
             onClick={createNewColumn}
             className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2 items-center justify-center
             rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2 transition-all duration-300">

@@ -2,7 +2,7 @@ import nikeImg1 from "../../../../public/nike.jpg";
 import nikeImg2 from "../../../../public/nike2.jpg";
 import nikeImg3 from "../../../../public/nike3.jpg";
 import nikeImg4 from "../../../../public/nike4.jpg";
-import { CartItem } from "../types";
+import type { CartItem } from "../types";
 
 export const Products: CartItem[] = [
   {
