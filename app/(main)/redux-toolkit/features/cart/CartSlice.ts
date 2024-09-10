@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartState } from "../../types";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { CartState } from "../../types";
 import { Products } from "../../data/Products";
 
 const initialState: CartState = {
@@ -40,10 +40,10 @@ const cartSlice = createSlice({
     calculateTotal: (state) => {
       let amount = 0;
       let total = 0;
-      state.cartItems.forEach((item) => {
+      for (const item of state.cartItems) {
         amount += item.amount;
-        total += item.amount * item.price;
-      });
+        total += item.amount * item.price
+      }
       state.amount = amount;
       state.total = total;
     },

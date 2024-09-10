@@ -1,7 +1,7 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store';
+import type { RootState } from '../store';
 import emptyCartImage from "../../../../public/happy.gif"
 import CartItem from './CarItem';
 import { openModal } from '../features/modal/ModalSlice';
@@ -20,8 +20,10 @@ const CartContainer: NextPage = () => {
                 <header>
                     <Image src={emptyCartImage} alt="Empty Cart" className="w-40 h-40 mb-4 mx-auto" />
                     <h2 className='text-4xl font-bold text-gray-800 mb-2'>Your Cart is Empty</h2>
-                    <h4 className='text-lg text-gray-600 mb-6'>Looks like you haven't added anything to your cart yet</h4>
+                    <h4 className='text-lg text-gray-600 mb-6'>Looks like you have not added anything to your cart yet</h4>
                     <button
+                        type="button"
+                        // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
                         onClick={() => window.location.href = '/redux-toolkit'}
                         className='px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300'>
                         Start Shopping
@@ -56,6 +58,7 @@ const CartContainer: NextPage = () => {
                         <span className='text-lg font-semibold'>{total}円</span>
                     </div>
                     <button
+                        type="button"
                         onClick={() => dispatch(openModal())}
                         className='mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600'>
                         全ての商品の選択解除

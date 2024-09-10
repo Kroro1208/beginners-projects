@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useDispatch } from "react-redux";
 import { decrease, increase, removeItem } from '../features/cart/CartSlice';
 import { TrashIcon } from "./icon/TrashIcon";
@@ -25,6 +25,7 @@ const CartItem = ({ id, img, title, price, amount }: Props) => {
                     <h4 className="text-lg font-bold">{title}</h4>
                     <h4 className="font-semibold">{price}</h4>
                     <button
+                        type="button"
                         onClick={() => dispatch(removeItem(id))}
                         className='text-red-500 hover:text-red-700'>
                         <TrashIcon />
@@ -33,12 +34,14 @@ const CartItem = ({ id, img, title, price, amount }: Props) => {
             </div>
             <div className="flex items-center">
                 <button
+                    type="button"
                     onClick={() => dispatch(increase(id))}
                     className='text-green-500 hover:text-green-700'>
                     <PlusIcon />
                 </button>
                 <p className="mx-2">{amount}</p>
                 <button
+                    type="button"
                     onClick={() => dispatch(decrease(id))}
                     className='text-red-500 hover:text-red-700'>
                     <MinusIcon />

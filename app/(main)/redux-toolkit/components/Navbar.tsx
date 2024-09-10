@@ -1,8 +1,8 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import Image from 'next/image';
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store'
+import type { RootState } from '../store'
 import rocketImage from '../../../../public/rocket.gif';
 import shopCartImage from '../../../../public/cart.gif';
 

@@ -1,8 +1,8 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import { useDispatch, useSelector } from "react-redux"
 import { clearCart } from "../features/cart/CartSlice";
 import { closeModal } from "../features/modal/ModalSlice";
-import { RootState } from "../store";
+import type { RootState } from "../store";
 
 const Modal: NextPage = () => {
     const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const Modal: NextPage = () => {
                 <h4 className="text-2xl font-bold mb-4">かごの中身を空にしますか？</h4>
                 <div className="flex justify-center gap-4">
                     <button
+                        type="button"
                         onClick={() => {
                             dispatch(clearCart())
                             dispatch(closeModal())
@@ -22,6 +23,7 @@ const Modal: NextPage = () => {
                         OK
                     </button>
                     <button
+                        type="button"
                         onClick={() => dispatch(closeModal())}
                         className="bg-gray-500 px-5 py-2 rounded-lg text-white hover:bg-gray-600 border-gray-700 border-b-4 active:border-b-0 transition-all transform active:scale-95">
                         NO
