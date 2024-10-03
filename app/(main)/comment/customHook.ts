@@ -1,22 +1,31 @@
-import { ChangeEvent, useState } from "react";
+import { type ChangeEvent, useState } from "react";
+
+type Comment = {
+  id: number;
+  text:string;
+}
 
 type UseComment = () => {
   inputText: string;
-  commentList: string[];
+  commentList: Comment[];
   handleInputComment: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   handleSubmit: () => void;
 };
 
 export const useCommentChatText: UseComment = () => {
   const [inputText, setInputText] = useState("");
-  const [commentList, setCommentList] = useState<string[]>([]);
+  const [commentList, setCommentList] = useState<Comment[]>([]);
 
   const handleInputComment = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
   };
   const handleSubmit = () => {
     if (!inputText.trim()) return;
-    setCommentList((prev) => [...prev, inputText]);
+    const newComment: Comment = {
+      id: Date.now(),
+      text: inputText
+    }
+    setCommentList((prev) => [...prev, newComment]);
     setInputText("");
   };
 
