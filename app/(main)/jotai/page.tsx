@@ -5,7 +5,6 @@ import { products } from "./data/data";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MinusIcon } from '../redux-toolkit/components/icon/MinusIcon';
 
 export default function CartPage() {
     const [cartItem, setCartItem] = useAtom(cartAtom);
