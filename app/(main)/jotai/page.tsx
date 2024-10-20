@@ -17,6 +17,13 @@ export default function CartPage() {
             return [...prevCart, {...item, quantity: item.quantity + 1}];
         });
     }
+
+    // 削除機能
+    const removeItem = (itemId: number) => {
+        setCartItem((prevCart) => (
+            prevCart.filter((prevCartItem) => prevCartItem.id !== itemId)
+        ))
+    }
     
   return (
     <div>
