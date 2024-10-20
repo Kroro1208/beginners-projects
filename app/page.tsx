@@ -152,6 +152,12 @@ export default function Home() {
               22 Pomodoro-Timer
             </div>
           </Link>
+          <Link href="/jotai">
+            <div className="border-2 hover:text-white border-gray-500 rounded-lg bg-red-300 hover:bg-red-800
+            px-4 p-4 text-center shadow-lg transition-colors duration-300 cursor-pointer">
+              23 jotai
+            </div>
+          </Link>
         </div>
       </div>
     </div>
