@@ -1,52 +1,13 @@
 "use client";
-import { useAtom } from "jotai";
-import { cartAtom, type CartItem } from "./utils/CartAtom";
 import { products } from "./data/data";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useCart } from "./utils/CartHooks";
 
 export default function CartPage() {
-    const [cartItem, setCartItem] = useAtom(cartAtom);
 
-    // カートにアイテム追加する機能
-    const addItem = (item: CartItem) => {
-        setCartItem((prevCart) => {
-                const existingItem = prevCart.find((prevItem) => prevItem.id === item.id);
-                if(existingItem) {
-                    return prevCart.map((prevCartItem) => (
-                        prevCartItem.id === item.id
-                    ) ? { ...prevCartItem, quantity: prevCartItem.quantity + 1} : prevCartItem
-                );
-            }
-            return [...prevCart, {...item, quantity: 1}];
-        });
-    }
-
-    // カートに戻す機能
-    const reduceItem = (itemId: number) => {
-        setCartItem((prevCart) => {
-            const existingItem = prevCart.find((prevItem) => prevItem.id === itemId);
-            if(existingItem) {
-                return prevCart.map((prevCartItem) => (
-                    prevCartItem.id === itemId && prevCartItem.quantity > 1
-                ) ? { ...prevCartItem, quantity: prevCartItem.quantity - 1} : prevCartItem
-            );
-        }
-        return prevCart;
-    });
-    }
-
-    // 削除機能
-    const removeItem = (itemId: number) => {
-        setCartItem((prevCart) => (
-            prevCart.filter((prevCartItem) => prevCartItem.id !== itemId)
-        ))
-    }
-
-    const totalAmount = cartItem.reduce((total, item) => {
-        return total + item.price * item.quantity;
-    }, 0)
+    const {addItem, reduceItem, removeItem, totalAmount, cartItem } = useCart();
     
   return (
     <div className="container mx-auto py-10 px-4 lg:px-8">
