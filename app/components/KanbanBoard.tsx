@@ -1,26 +1,36 @@
 "use client";
-import { useEffect, useMemo, useState } from "react"
-import { PlusIcon } from "./icon/PlusIcon"
+import { useEffect, useMemo, useState } from "react";
+import { PlusIcon } from "./icon/PlusIcon";
 import type { Column, Id, Task } from "../(main)/drag&drop/types";
 import { ColumnContainer } from "./ColumnContainer";
-import { DndContext, type DragEndEvent, type DragOverEvent, DragOverlay, type DragStartEvent, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import {
+  DndContext,
+  type DragEndEvent,
+  type DragOverEvent,
+  DragOverlay,
+  type DragStartEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 import { TaskCard } from "./TaskCard";
 
 export const KanbanBoard = () => {
-
   const [columns, setColumns] = useState<Column[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
 
-  const sensors = useSensors(useSensor(PointerSensor, {
-    activationConstraint: {
-      distance: 10,
-    }
-  }))
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 10,
+      },
+    })
+  );
 
   const [mounted, setMounted] = useState(false); // mountedでコンポーネントがマウントされたかどうかを追跡
 
@@ -32,9 +42,9 @@ export const KanbanBoard = () => {
   const createNewColumn = () => {
     const columnToAdd: Column = {
       id: generateId(),
-      title: `Column ${columns.length + 1}`
-    }
-    setColumns([...columns, columnToAdd])
+      title: `Column ${columns.length + 1}`,
+    };
+    setColumns([...columns, columnToAdd]);
   };
 
   // column削除ボタン
@@ -43,7 +53,7 @@ export const KanbanBoard = () => {
     setColumns(filterColumns);
     const newTasks = tasks.filter((t) => t.columnId !== id);
     setTasks(newTasks);
-  }
+  };
 
   // column作成ボタン内で使用するidを作成する関数
   const generateId = () => {
@@ -60,7 +70,7 @@ export const KanbanBoard = () => {
       setActiveTask(e.active.data.current.task);
       return;
     }
-  }
+  };
 
   const onDragEnd = (e: DragEndEvent) => {
     setActiveColumn(null);
@@ -76,8 +86,8 @@ export const KanbanBoard = () => {
       const activeColumnIndex = columns.findIndex((col) => col.id === activeId);
       const overColumnIndex = columns.findIndex((col) => col.id === overId);
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
-    })
-  }
+    });
+  };
 
   const onDragOver = (e: DragOverEvent) => {
     const { active, over } = e;
@@ -113,7 +123,7 @@ export const KanbanBoard = () => {
         return arrayMove(tasks, activeIndex, activeIndex);
       });
     }
-  }
+  };
 
   const updateColumn = (id: Id, title: string) => {
     const newColumns = columns.map((col) => {
@@ -121,16 +131,16 @@ export const KanbanBoard = () => {
       return { ...col, title };
     });
     setColumns(newColumns);
-  }
+  };
 
   const createTask = (columnId: Id) => {
     const newTask: Task = {
       id: generateId(),
       columnId,
-      content: `Task ${tasks.length + 1}`
+      content: `Task ${tasks.length + 1}`,
     };
     setTasks([...tasks, newTask]);
-  }
+  };
 
   const updatedTask = (id: Id, content: string) => {
     const newTasks = tasks.map((task) => {
@@ -138,18 +148,24 @@ export const KanbanBoard = () => {
       return { ...task, content };
     });
     setTasks(newTasks);
-  }
-
+  };
 
   const deleteTask = (id: Id) => {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
-  }
+  };
 
   return (
     <div className="m-auto flex flex-col items-center min-h-screen w-full overflow-x-auto overflow-y-auto px-8 bg-gradient-to-r from-slate-400 via-gray-600 to-gray-750">
-      <h1 className="text-4xl font-bold text-white my-8">Awesome Task Management Board</h1>
-      <DndContext onDragStart={onDragStart} onDragEnd={onDragEnd} onDragOver={onDragOver} sensors={sensors}>
+      <h1 className="text-4xl font-bold text-white my-8">
+        Awesome Task Management Board
+      </h1>
+      <DndContext
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
+        sensors={sensors}
+      >
         <div className="flex gap-4">
           <div className="text-white flex gap-2">
             <SortableContext items={columnsId}>
@@ -171,29 +187,39 @@ export const KanbanBoard = () => {
             type="button"
             onClick={createNewColumn}
             className="h-[60px] w-[30px] min-w-[350px] cursor-pointer text-white flex gap-2 items-center justify-center
-            rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2 transition-all duration-300">
+            rounded-lg bg-slate-700 border-gray-500 border-2 p-4 ring-green-500 hover:ring-2 transition-all duration-300"
+          >
             <PlusIcon />
             タスクボード追加
           </button>
         </div>
-        {mounted && createPortal(
-          <DragOverlay>
-            {activeColumn &&
-              (<ColumnContainer
-                column={activeColumn}
-                deleteColum={deleteColumn}
-                updateColumn={updateColumn}
-                createTask={createTask}
-                updatedTask={updatedTask}
-                deleteTask={deleteTask}
-                tasks={tasks.filter((task) => task.columnId === activeColumn.id)}
-              />)}
-            {activeTask && <TaskCard task={activeTask} deleteTask={deleteTask} updatedTask={updatedTask} />}
-          </DragOverlay>,
-          document.body
-        )}
+        {mounted &&
+          createPortal(
+            <DragOverlay>
+              {activeColumn && (
+                <ColumnContainer
+                  column={activeColumn}
+                  deleteColum={deleteColumn}
+                  updateColumn={updateColumn}
+                  createTask={createTask}
+                  updatedTask={updatedTask}
+                  deleteTask={deleteTask}
+                  tasks={tasks.filter(
+                    (task) => task.columnId === activeColumn.id
+                  )}
+                />
+              )}
+              {activeTask && (
+                <TaskCard
+                  task={activeTask}
+                  deleteTask={deleteTask}
+                  updatedTask={updatedTask}
+                />
+              )}
+            </DragOverlay>,
+            document.body
+          )}
       </DndContext>
     </div>
-  )
-}
-
+  );
+};
