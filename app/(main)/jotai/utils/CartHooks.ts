@@ -1,49 +1,101 @@
 import { useAtom } from "jotai";
 import { cartAtom, type CartItem } from "./CartAtom";
 
+// カート操作の結果を表す型
+type CartOperationResult = {
+  success: boolean;
+  message?: string;
+};
+
+// カートの状態を表す型
+type CartState = {
+  items: CartItem[];
+  totalAmount: number;
+};
+
+// 数量更新関数
+const updateItemQuantity = (
+  items: CartItem[],
+  itemId: number,
+  updateFn: (quantity: number) => number
+): CartItem[] => {
+  return items.map((item) =>
+    item.id === itemId ? { ...item, quantity: updateFn(item.quantity) } : item
+  );
+};
+
+// 合計金額更新関数
+const calculateTotalAmount = (items: CartItem[]): number => {
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+
 export const useCart = () => {
-  // カートにアイテム追加する機能
-  const [cartItem, setCartItem] = useAtom(cartAtom);
+  const [cartItems, setCartItems] = useAtom(cartAtom);
 
-  const addItem = (item: CartItem) => {
-    setCartItem((prevCart) => {
-      const existingItem = prevCart.find((prevItem) => prevItem.id === item.id);
-      if (existingItem) {
-        return prevCart.map((prevCartItem) =>
-          prevCartItem.id === item.id
-            ? { ...prevCartItem, quantity: prevCartItem.quantity + 1 }
-            : prevCartItem
+  const addItem = (item: CartItem): CartOperationResult => {
+    try {
+      setCartItems((prevItems) => {
+        const existingItem = prevItems.find(
+          (prevItem) => prevItem.id === item.id
         );
-      }
-      return [...prevCart, { ...item, quantity: 1 }];
-    });
+        if (existingItem) {
+          return updateItemQuantity(prevItems, item.id, (q) => q + 1);
+        }
+        return [...prevItems, { ...item, quantity: 1 }];
+      });
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        message: `Failed to add item: ${error instanceof Error ? error.message : "Unknown error"}`,
+      };
+    }
   };
 
-  // カートに戻す機能
-  const reduceItem = (itemId: number) => {
-    setCartItem((prevCart) => {
-      const existingItem = prevCart.find((prevItem) => prevItem.id === itemId);
-      if (existingItem) {
-        return prevCart.map((prevCartItem) =>
-          prevCartItem.id === itemId && prevCartItem.quantity > 1
-            ? { ...prevCartItem, quantity: prevCartItem.quantity - 1 }
-            : prevCartItem
-        );
-      }
-      return prevCart;
-    });
+  const reduceItem = (itemId: number): CartOperationResult => {
+    try {
+      setCartItems((prevItems) => {
+        const existingItem = prevItems.find((item) => item.id === itemId);
+        if (!existingItem) {
+          return prevItems;
+        }
+        if (existingItem.quantity <= 1) {
+          return prevItems;
+        }
+        return updateItemQuantity(prevItems, itemId, (q) => q - 1);
+      });
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        message: `Failed to reduce item quantity: ${error instanceof Error ? error.message : "Unknown error"}`,
+      };
+    }
   };
 
-  // 削除機能
-  const removeItem = (itemId: number) => {
-    setCartItem((prevCart) =>
-      prevCart.filter((prevCartItem) => prevCartItem.id !== itemId)
-    );
+  const removeItem = (itemId: number): CartOperationResult => {
+    try {
+      setCartItems((prevItems) =>
+        prevItems.filter((item) => item.id !== itemId)
+      );
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        message: `Failed to remove item: ${error instanceof Error ? error.message : "Unknown error"}`,
+      };
+    }
   };
 
-  const totalAmount = cartItem.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
+  const cartState: CartState = {
+    items: cartItems,
+    totalAmount: calculateTotalAmount(cartItems),
+  };
 
-  return { addItem, reduceItem, removeItem, totalAmount, cartItem };
+  return {
+    ...cartState,
+    addItem,
+    reduceItem,
+    removeItem,
+  };
 };
